@@ -8,7 +8,7 @@ import ProductCompThree from '../ProductCompThree/ProductCompThree';
 export default function Home() {
 	return (
 		<div className="home">
-			<div className="home_product_carousel">
+			 <div className="home_product_carousel">
 				<Carousel>
 					<Carousel.Item>
 						<img
@@ -34,6 +34,11 @@ export default function Home() {
 						/>
 					</Carousel.Item>
 				</Carousel>
+			</div> 
+			<div className="home_product_promotion_row">
+				<ProductCompTwo />
+				<ProductCompThree />
+				{/* <ProductCompOne /> */}
 			</div>
 			<div className="home_product_row_1">
 				<ProductCompOne />
@@ -42,7 +47,7 @@ export default function Home() {
 				<ProductCompOne />
 				<ProductCompOne />
 			</div>
-			<div className="home_product_row_2">
+			{/* <div className="home_product_row_2">
 				<ProductCompOne />
 				<ProductCompOne />
 				<ProductCompOne />
@@ -56,7 +61,7 @@ export default function Home() {
 			<div className="home_product_row_4">
 				<ProductCompOne />
 				<ProductCompOne />
-			</div>
+			</div> */}
 		</div>
 	);
 }

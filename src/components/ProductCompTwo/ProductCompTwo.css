@@ -1,0 +1,21 @@
+.product_comp_two {
+	background-color: black;
+	color: white;
+	width: 50%;
+	margin: 25px;
+}
+.product_comp_two > img {
+	width: 100%;
+	object-fit: contain;
+	margin-bottom: 10px;
+}
+.product_comp_two > h4 {
+	margin: 0px 0px 10px 10px;
+}
+
+.product_comp_two > h5 {
+	margin-left: 10px;
+}
+.product_comp_two > h6 {
+	margin: 0px 0px 10px 10px;
+}

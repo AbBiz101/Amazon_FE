@@ -10,9 +10,9 @@ export default function ProductCompOne() {
 				alt=""
 				src="https://images.unsplash.com/photo-1637966495998-23d7fb7e03be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
 			/>
-			<p className="product_description">
+			<p className="product_description" style={{ textoverflow: 'ellipsis' }}>
 				Gifts for Men, Magnetic Bracelet Craftsman – Best Men Gifts, Magnetic
-				Bracelet Tool with 15 Magnets,Gifts for Men, Magnetic Bracelet
+				Bracelet Tool with 15 Magnets,Gifts for Men, 
 			</p>
 			<h6 className="product_price">
 				€ <strong>25.00</strong>
