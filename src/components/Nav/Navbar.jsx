@@ -9,6 +9,7 @@ export default function Navbar() {
 			<div className="header_location">
 				<img
 					className="header_logo"
+					alt=""
 					src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
 				/>
 				<div className="header_location_info">

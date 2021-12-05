@@ -1,11 +1,18 @@
 .home {
 	width: 100%;
+	display: flex;
+	flex-direction: column;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
+}
+.home_product_carousel {
+	margin-bottom: -150px;
 }
 
 .carousel-item {
 	width: 100%;
 	max-height: 655px;
-	margin-bottom: -100px;
 	mask-image: linear-gradient(to bottom, rgb(0, 0, 0, 1), rgb(0, 0, 0, 0));
 	z-index: -1;
 }
@@ -14,4 +21,13 @@
 .carousel-control-prev,
 .carousel-indicators {
 	display: none !important;
+}
+
+.home_product_row_1,
+.home_product_row_2,
+.home_product_row_3,
+.home_product_row_4 {
+	display: flex;
+	flex-direction: row;
+	justify-content: center;
 }
