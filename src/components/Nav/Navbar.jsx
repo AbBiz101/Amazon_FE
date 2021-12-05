@@ -1,17 +1,21 @@
 import './Navbar.css';
 import { BsSearch } from 'react-icons/bs';
-import { RiShoppingCartLine } from 'react-icons/ri';
 import { ImLocation } from 'react-icons/im';
+import { RiShoppingCartLine } from 'react-icons/ri';
 import { DropdownButton, Dropdown } from 'react-bootstrap';
+import { Link } from 'react-router-dom';
 export default function Navbar() {
 	return (
-		<div className="header col-12">
+		<div className="header">
 			<div className="header_location">
-				<img
-					className="header_logo"
-					alt=""
-					src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
-				/>
+				<Link to="/home">
+					<img
+						className="header_logo"
+						alt=""
+						src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
+					/>
+				</Link>
+
 				<div className="header_location_info">
 					<ImLocation size={30} />
 					<div>
@@ -59,10 +63,12 @@ export default function Navbar() {
 					<span>Your</span>
 					<h5>Prime</h5>
 				</div>
-				<div className="header_options_4">
-					<RiShoppingCartLine size={35} />
-					<h4 className="mx-3">2</h4>
-				</div>
+				<Link to="/checkout">
+					<div className="header_options_4">
+						<RiShoppingCartLine size={35} />
+						<h4 className="mx-3">2</h4>
+					</div>
+				</Link>
 			</div>
 		</div>
 	);

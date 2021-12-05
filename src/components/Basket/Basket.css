@@ -1,0 +1,33 @@
+.basket {
+	width: 100%;
+	background-color: #eaeded;
+	display: flex;
+	flex-direction: row;
+}
+.basket_left {
+	flex: 1;
+	margin: 25px 15px 25px 25px;
+}
+.basket_right {
+	flex: 0.4;
+	margin: 25px 25px 25px 15px;
+}
+.basket_left,
+.basket_right {
+	background-color: rgb(255, 255, 255);
+	border: 1px solid lightgrey;
+	border-radius: 10px;
+}
+
+.basket_checkout_btn {
+	background-color: #ffd814;
+	border: 1px solid rgb(148, 148, 148);
+	border-radius: 5px;
+	margin: 10px auto 10px auto;
+	color: black;
+	width: 70%;
+}
+.basket_right_description {
+	color: green;
+    align-items: center;
+}
