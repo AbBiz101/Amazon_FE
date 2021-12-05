@@ -1,6 +1,7 @@
 import './Basket.css';
-import ProductCompFour from '../ProductCompFour/ProductCompFour';
 import { AiFillCheckCircle } from 'react-icons/ai/';
+// import { useSelector, useDispatch } from 'react-redux';
+import ProductCompFour from '../ProductCompFour/ProductCompFour';
 
 export default function Basket() {
 	return (
@@ -10,7 +11,7 @@ export default function Basket() {
 				<ProductCompFour />
 			</div>
 			<div className="basket_right">
-				<div className="basket_right_description">
+				<div className="my-2 mx-3 basket_right_description">
 					<AiFillCheckCircle size={20} />
 					<p className=" mx-1 d-inline">
 						Your order qualifies for Free Domestic and International Delivery.
