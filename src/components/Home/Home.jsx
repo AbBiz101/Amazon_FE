@@ -1,10 +1,22 @@
 import './Home.css';
+import { useEffect } from 'react';
 import { Carousel } from 'react-bootstrap';
+import { useDispatch, useSelector } from 'react-redux';
 import ProductCompOne from '../ProductCompOne/ProductCompOne';
 import ProductCompTwo from '../ProductCompTwo/ProductCompTwo';
+import { getAllProducts } from '../../Redux/Action/index';
 import ProductCompThree from '../ProductCompThree/ProductCompThree';
 
 export default function Home() {
+	const search = useSelector((state) => state.search.stock);
+	const searchLoading = useSelector((state) => state.search.isLoading);
+	const product = useSelector((state) => state.product.stock);
+
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(getAllProducts());
+		console.log(product, searchLoading);
+	}, [search]);
 	return (
 		<div className="home">
 			<div className="home_product_carousel">
@@ -41,30 +53,9 @@ export default function Home() {
 			</div>
 
 			<div className="home_product_row_1">
-				<ProductCompOne />
-				<ProductCompOne />
-				<ProductCompOne />
-				<ProductCompOne />
-				<ProductCompOne />
-			</div>
-
-			<div className="mb-3 home_product_row_2">
-				<ProductCompOne />
-				<ProductCompOne />
-				<ProductCompOne />
-				<ProductCompOne />
-			</div>
-
-			<div className="mb-3 home_product_row_3">
-				<ProductCompOne />
-				<ProductCompOne />
-				<ProductCompOne />
-			</div>
-
-			<div className="mb-3 home_product_row_4">
-				<ProductCompOne />
-				<ProductCompOne />
-				<ProductCompOne />
+				{searchLoading
+					? product.map((item) => <ProductCompOne item={item} />)
+					: search.map((item) => <ProductCompOne item={item} />)}
 			</div>
 		</div>
 	);

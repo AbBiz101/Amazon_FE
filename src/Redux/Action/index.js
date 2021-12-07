@@ -6,6 +6,7 @@ export const ADD_USER_NAME = 'ADD_USER_NAME';
 export const TOGGLE_LOADER = 'TOGGLE_LOADER';
 export const SEARCH_LOADER = 'SEARCH_LOADER';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
+export const SEARCH_RESET = 'SEARCH_RESET';
 export const ADD_TO_CART = 'ADD_TO_CART';
 
 export const removeFromCart = (index) => ({
@@ -25,15 +26,16 @@ export const addUserName = (name) => ({
 
 export const getAllProducts = () => {
 	return async (dispatch) => {
+		searchReset();
 		try {
 			const resp = await fetch(
-				'https://striveschool-api.herokuapp.com/food-books',
+				'https://strive-jobs-api.herokuapp.com/jobs?limit=10',
 			);
 			if (resp.ok) {
 				const data = await resp.json();
 				dispatch({
 					type: GET_PRODUCTS,
-					payload: data,
+					payload: data.data,
 				});
 
 				dispatch({ type: TOGGLE_LOADER, payload: false });
@@ -54,13 +56,16 @@ export const searchProducts = (name) => {
 	return async (dispatch) => {
 		try {
 			const resp = await fetch(
-				'https://striveschool-api.herokuapp.com/' + name,
+				'https://strive-jobs-api.herokuapp.com/jobs?search=' +
+					name +
+					'&limit=15',
 			);
 			if (resp.ok) {
 				const data = await resp.json();
+				console.log(data.data);
 				dispatch({
 					type: SEARCH_PRODUCTS,
-					payload: data,
+					payload: data.data,
 				});
 
 				dispatch({ type: SEARCH_LOADER, payload: false });
@@ -76,3 +81,8 @@ export const searchProducts = (name) => {
 		}
 	};
 };
+
+export const searchReset = () => ({
+	type: SEARCH_RESET,
+	payload: [],
+});

@@ -24,11 +24,12 @@
 }
 
 .home_product_promotion_row,
-.home_product_row_1,
-.home_product_row_2,
-.home_product_row_3,
-.home_product_row_4 {
+.home_product_row_1 {
 	display: flex;
 	flex-direction: row;
-	justify-content: center;
+	justify-content: left;
+}
+.home_product_row_1 {
+	width: 100%;
+	flex-wrap: wrap;
 }

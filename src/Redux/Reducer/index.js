@@ -8,6 +8,7 @@ import {
 	TOGGLE_LOADER,
 	SEARCH_LOADER,
 	GET_PRODUCTS,
+	SEARCH_RESET,
 	ADD_TO_CART,
 } from '../Action/index';
 
@@ -20,7 +21,10 @@ export const userReducer = (state = initialState.user, action) => {
 		case REMOVE_FROM_CART:
 			return {
 				...state,
-				cart: state.cart.filter((i) => i !== action.payload),
+				cart: [
+					...state.cart.slice(0, action.payload),
+					...state.cart.slice(action.payload + 1),
+				],
 			};
 		default:
 			return state;
@@ -43,7 +47,9 @@ export const productReducer = (state = initialState.product, action) => {
 export const searchReducer = (state = initialState.search, action) => {
 	switch (action.type) {
 		case SEARCH_PRODUCTS:
-			return { ...state, stock: action.payload };
+			return { stock: action.payload };
+		case SEARCH_RESET:
+			return { stock: action.payload, isLoading: true };
 		case SEARCH_LOADER:
 			return { ...state, isLoading: action.payload };
 		case SEARCH_PRODUCTS_ERROR:

@@ -11,6 +11,7 @@
 .basket_right {
 	flex: 0.4;
 	margin: 25px 25px 25px 15px;
+	max-height: 210px;
 }
 .basket_left,
 .basket_right {
@@ -29,5 +30,11 @@
 }
 .basket_right_description {
 	color: green;
-    align-items: center;
+	align-items: center;
+}
+
+.basket_left_ul {
+	list-style-type: none;
+	margin: 0px 15px;
+	padding: 0px;
 }

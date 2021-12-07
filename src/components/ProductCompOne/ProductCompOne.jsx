@@ -1,7 +1,12 @@
 import './ProductCompOne.css';
+import { addToCar } from '../../Redux/Action/index';
+import { useDispatch, useSelector } from 'react-redux';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 
-export default function ProductCompOne() {
+export default function ProductCompOne({ item }) {
+	const userName = useSelector((state) => state.user.userName);
+	const dispatch = useDispatch();
+
 	return (
 		<div className="product_comp_one">
 			<h4 className="product_name">Title</h4>
@@ -12,7 +17,7 @@ export default function ProductCompOne() {
 			/>
 			<p className="product_description" style={{ textoverflow: 'ellipsis' }}>
 				Gifts for Men, Magnetic Bracelet Craftsman – Best Men Gifts, Magnetic
-				Bracelet Tool with 15 Magnets,Gifts for Men, 
+				Bracelet Tool with 15 Magnets,Gifts for Men,
 			</p>
 			<h6 className="product_price">
 				€ <strong>25.00</strong>
@@ -21,7 +26,16 @@ export default function ProductCompOne() {
 				<AiFillStar style={{ color: '#aa9115' }} />
 				<AiOutlineStar style={{ color: '#aa9115' }} />
 			</h6>
-			<button className="add_product_btn">Add To Basket</button>
+			{userName ? (
+				<button
+					onClick={() => dispatch(addToCar())}
+					className="add_product_btn"
+				>
+					Add To Basket
+				</button>
+			) : (
+				<h4>Log in to add items to your cart!</h4>
+			)}
 		</div>
 	);
 }

@@ -4,7 +4,8 @@
 	justify-content: flex-end;
 	background: whitesmoke;
 	align-items: center;
-	width: 100%;
+	max-width: 15%;
+	min-width: 15%;
 	max-height: 500px;
 	min-height: 200px;
 	margin: 10px;
@@ -24,7 +25,7 @@
 	margin: 0px;
 	width: 100%;
 	max-height: 75px;
-	text-overflow:ellipsis;
+	text-overflow: ellipsis;
 	margin-bottom: 10px;
 }
 

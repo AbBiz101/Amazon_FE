@@ -1,0 +1,39 @@
+.product-comp-four {
+	display: flex;
+	flex-direction: row;
+	width: 100%;
+	border-bottom: 1px solid rgb(148, 148, 148);
+	max-height: 220px;
+	min-height: 220px;
+	margin-top: 15px;
+}
+
+.product-comp-four > img {
+	display: flex;
+	max-height: 200px;
+	min-height: 200px;
+	margin: 0px 20px 15px;
+	flex: 1;
+}
+
+.product_four_description {
+	display: flex;
+	flex-direction: column;
+	flex: 4;
+}
+
+.product_price {
+	display: flex;
+	text-align: right;
+	margin: 0px 30px;
+	flex: 0.5;
+}
+
+.product_four_btn {
+	border: 1px solid rgb(148, 148, 148);
+	background-color: #ffd814;
+	margin: auto auto 20px 0px;
+	border-radius: 5px;
+	color: black;
+	width: 30%;
+}

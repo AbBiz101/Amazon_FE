@@ -7,6 +7,7 @@ import { createStore, combineReducers, compose, applyMiddleware } from 'redux';
 export const initialState = {
 	user: {
 		userName: '',
+		password: '',
 		cart: [],
 	},
 	product: { stock: [], isLoading: true, isError: false },
