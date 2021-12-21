@@ -2,12 +2,13 @@ export const SEARCH_PRODUCTS_ERROR = 'SEARCH_PRODUCTS_ERROR';
 export const GET_PRODUCTS_ERROR = 'GET_PRODUCTS_ERROR';
 export const REMOVE_FROM_CART = 'REMOVE_FROM_CART';
 export const SEARCH_PRODUCTS = 'SEARCH_PRODUCTS';
-export const ADD_USER_NAME = 'ADD_USER_NAME';
 export const TOGGLE_LOADER = 'TOGGLE_LOADER';
 export const SEARCH_LOADER = 'SEARCH_LOADER';
 export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const SEARCH_RESET = 'SEARCH_RESET';
 export const ADD_TO_CART = 'ADD_TO_CART';
+export const REGISTER = 'REGISTER';
+export const LOG_IN = 'LOG_IN';
 
 export const removeFromCart = (index) => ({
 	type: REMOVE_FROM_CART,
@@ -19,9 +20,14 @@ export const addToCar = (toAdd) => ({
 	payload: toAdd,
 });
 
-export const addUserName = (name) => ({
-	type: ADD_USER_NAME,
-	payload: name,
+export const logIn = (userInfo) => ({
+	type: LOG_IN,
+	payload: userInfo,
+});
+
+export const register = (userInfo) => ({
+	type: REGISTER,
+	payload: userInfo,
 });
 
 export const getAllProducts = () => {

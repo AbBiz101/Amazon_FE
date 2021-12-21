@@ -1,22 +1,25 @@
 import './Navbar.css';
-import { Link } from 'react-router-dom';
-import { Button } from 'react-bootstrap';
-import { BsSearch } from 'react-icons/bs';
-import { ImLocation } from 'react-icons/im';
-import { RiShoppingCartLine } from 'react-icons/ri';
-import { addUserName } from '../../Redux/Action/index';
-import { useSelector, useDispatch } from 'react-redux';
 import {
 	searchProducts,
 	getAllProducts,
 	searchReset,
 } from '../../Redux/Action/index';
+import { Link } from 'react-router-dom';
+import { Button } from 'react-bootstrap';
+import { BsSearch } from 'react-icons/bs';
+import { useNavigate } from 'react-router';
+import { RiShoppingCartLine } from 'react-icons/ri';
+import { useSelector, useDispatch } from 'react-redux';
 import { DropdownButton, Dropdown } from 'react-bootstrap';
 
 export default function Navbar() {
+	const history = useNavigate();
 	const dispatch = useDispatch();
-	const userName = useSelector((state) => state.user.userName);
+	const role = useSelector((state) => state.user.role);
+	const firstName = useSelector((state) => state.user.firstName);
 	const cartLength = useSelector((state) => state.user.cart.length);
+
+	console.log(firstName, role);
 
 	return (
 		<div className="header">
@@ -29,20 +32,26 @@ export default function Navbar() {
 						src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
 					/>
 				</Link>
-				{!userName ? (
+				{!firstName ? (
 					<></>
 				) : (
 					<>
 						<div className="header_location_info">
-							<ImLocation size={30} />
 							<div>
-								<span>Deliver to User</span>
+								<span>Deliver to {firstName}</span>
 								<h5>Stuttgart 70327‌</h5>
 							</div>
 						</div>
 					</>
 				)}
 			</div>
+			{role === 'ADMIN' ? (
+				<div className="header_back_office">
+					<h5 onClick={(e) => history('/backOffice')}>Back Office</h5>
+				</div>
+			) : (
+				<></>
+			)}
 
 			<div className="header_search">
 				<DropdownButton
@@ -65,7 +74,7 @@ export default function Navbar() {
 				<BsSearch size={25} className="header_search_icon" />
 			</div>
 			<div className="header_options">
-				{userName ? (
+				{firstName ? (
 					<>
 						<div className="header_options_0">
 							<DropdownButton
@@ -79,7 +88,7 @@ export default function Navbar() {
 									<Button
 										type="submit"
 										className="mb-2"
-										onClick={() => dispatch(addUserName(''))}
+										onClick={() => dispatch()}
 									>
 										Logout
 									</Button>
@@ -89,7 +98,7 @@ export default function Navbar() {
 
 						<div className="header_options_1">
 							<span>Hello</span>
-							<h5>{userName}</h5>
+							<h5>{firstName}</h5>
 						</div>
 
 						<div className="header_options_2">

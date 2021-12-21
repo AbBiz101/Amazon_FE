@@ -2,21 +2,23 @@ import './Home.css';
 import { useEffect } from 'react';
 import { Carousel } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
+import { getAllProducts } from '../../Redux/Action/index';
 import ProductCompOne from '../ProductCompOne/ProductCompOne';
 import ProductCompTwo from '../ProductCompTwo/ProductCompTwo';
-import { getAllProducts } from '../../Redux/Action/index';
 import ProductCompThree from '../ProductCompThree/ProductCompThree';
 
 export default function Home() {
+
 	const search = useSelector((state) => state.search.stock);
-	const searchLoading = useSelector((state) => state.search.isLoading);
 	const product = useSelector((state) => state.product.stock);
+	const searchLoading = useSelector((state) => state.search.isLoading);
 
 	const dispatch = useDispatch();
+
 	useEffect(() => {
 		dispatch(getAllProducts());
-		console.log(product, searchLoading);
 	}, [search]);
+
 	return (
 		<div className="home">
 			<div className="home_product_carousel">

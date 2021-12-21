@@ -1,15 +1,50 @@
 import './login.css';
 import { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { addUserName } from '../../Redux/Action/index';
+import { Form } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
+import { logIn } from '../../Redux/Action/index';
 
 export default function Login() {
+	const history = useNavigate();
 	const dispatch = useDispatch();
-	const [username, setUsername] = useState('');
+	const [email, setEmail] = useState('');
+	const [password, setPassword] = useState('');
+
+	const loginHandler = async (e) => {
+		e.preventDefault();
+		try {
+			// const params = new URLSearchParams(window.location.search);
+			// const accessToken =
+			// 	localStorage.getItem('ACCESS_TOKEN') || params.get('accessToken');
+
+			let res = await fetch('http://localhost:3003/users/login', {
+				method: 'POST',
+				body: JSON.stringify({
+					email,
+					password,
+				}),
+				headers: { 'Content-Type': 'application/json' },
+			});
+
+			if (res.ok) {
+				let data = await res.json();
+				localStorage.setItem('accessToken', data.accessToken);
+				localStorage.setItem('refreshToken', data.refreshToken);
+				console.log(data);
+				history('/home');
+			} else {
+				history('/');
+			}
+		} catch (error) {
+			history('/');
+			console.log(error);
+		}
+	};
 
 	return (
-		<div className="login_container">
+		<div onSubmit={loginHandler} className="login_container">
 			<img
 				className="login_logo"
 				alt=""
@@ -24,18 +59,23 @@ export default function Login() {
 						type="text"
 						placeholder="YourEmail@...com"
 						required
-						onChange={(e) => setUsername(e.target.value)}
+						value={email}
+						onChange={(e) => setEmail(e.target.value)}
 					/>
 					<h5 className="login_page_label">Password</h5>
-					<input
+					<Form.Control
 						className="login_page_input"
-						type="text"
-						placeholder="Your password"
+						value={password}
+						onChange={(e) => {
+							setPassword(e.target.value);
+						}}
+						type="password"
+						placeholder="Password"
 					/>
 					<Link to="/">
 						<button
 							className="login_page_btn1"
-							onClick={() => dispatch(addUserName(username))}
+							onClick={() => dispatch(logIn(email, password))}
 						>
 							Sing in
 						</button>
@@ -46,9 +86,24 @@ export default function Login() {
 						Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam
 						nonummy nibh euismod tincidunt ut laoreet
 					</p>
-					<button className="login_page_btn2">
+					<button
+						type="button"
+						onClick={(e) => {
+							history('/register');
+						}}
+						className="login_page_btn2"
+					>
 						Create Your Amazon Account
 					</button>
+					<a href="http://localhost:3003/users/googleLogin">
+						<button type="button" className="login_page_btn2">
+							<img
+								alt=""
+								src="https://library.kissclipart.com/20180829/zlq/kissclipart-google-logo-png-clipart-google-logo-google-search-6aa66a36629c5f13.jpg"
+							/>
+							Sign in with Google Account
+						</button>
+					</a>
 				</form>
 			</div>
 		</div>

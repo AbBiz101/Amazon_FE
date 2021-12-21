@@ -11,7 +11,10 @@
 	align-items: center;
 	justify-content: space-between;
 }
-
+.header_back_office {
+	cursor: pointer;
+	margin-right: 30px;
+}
 .header_search {
 	display: flex;
 	flex-grow: 2;
@@ -26,7 +29,7 @@
 }
 .header_options {
 	display: flex;
-	flex: 1 ;
+	flex: 1;
 	flex-direction: row;
 	justify-content: space-evenly;
 }
@@ -48,8 +51,6 @@ a {
 	flex-direction: row;
 	align-items: center;
 }
-
-
 
 #dropdown-variants-secondary {
 	border-radius: 5px 0px 0px 5px;
@@ -83,7 +84,6 @@ a {
 	width: 80%;
 	border: none;
 }
-
 
 .header_options_4 {
 	display: flex;
