@@ -6,16 +6,29 @@ import { getAllProducts } from '../../Redux/Action/index';
 import ProductCompOne from '../ProductCompOne/ProductCompOne';
 import ProductCompTwo from '../ProductCompTwo/ProductCompTwo';
 import ProductCompThree from '../ProductCompThree/ProductCompThree';
+import { useNavigate } from 'react-router';
 
 export default function Home() {
-
+	const history = useNavigate();
+	const dispatch = useDispatch();
 	const search = useSelector((state) => state.search.stock);
 	const product = useSelector((state) => state.product.stock);
 	const searchLoading = useSelector((state) => state.search.isLoading);
 
-	const dispatch = useDispatch();
+	const login = async () => {
+		const params = new URLSearchParams(window.location.search);
+		const accessToken =
+			localStorage.getItem('ACCESS_TOKEN') || params.get('accessToken');
+
+		if (!accessToken) {
+			history('/');
+		} else if (params.get('accessToken')) {
+			history('/home');
+		}
+	};
 
 	useEffect(() => {
+		login();
 		dispatch(getAllProducts());
 	}, [search]);
 

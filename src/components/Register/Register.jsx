@@ -9,7 +9,7 @@ export default function Register() {
 	const history = useNavigate();
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState('');
-	const [image, setImage] = useState('');
+	const [avatar, setAvatar] = useState('');
 	const [password, setPassword] = useState('');
 	const [lastName, setLastName] = useState('');
 	const [firstName, setFirstName] = useState('');
@@ -17,18 +17,14 @@ export default function Register() {
 	const registerHandler = async (e) => {
 		e.preventDefault();
 		try {
-			// const params = new URLSearchParams(window.location.search);
-			// const accessToken =
-			// 	localStorage.getItem('ACCESS_TOKEN') || params.get('accessToken');
-
-			let res = await fetch('http://localhost:3003/users/register', {
+			let res = await fetch('http://localhost:3010/user/register', {
 				method: 'POST',
 				body: JSON.stringify({
 					email,
 					password,
 					firstName,
 					lastName,
-					image,
+					avatar,
 				}),
 				headers: { 'Content-Type': 'application/json' },
 			});
@@ -47,14 +43,14 @@ export default function Register() {
 	};
 
 	return (
-		<div onSubmit={registerHandler} className="login_container">
+		<div className="login_container">
 			<img
 				className="login_logo"
 				alt=""
 				src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2000px-Amazon_logo.svg.png"
 			/>
 			<div className="register_page">
-				<form className="register_page_form">
+				<form onSubmit={registerHandler}  className="register_page_form">
 					<h1 className="register_page_title">Register</h1>
 
 					<h5 className="register_page_label">First Name</h5>
@@ -79,8 +75,8 @@ export default function Register() {
 
 					<h5 className="register_page_label">Profile Picture(optional)</h5>
 					<input
-						value={image}
-						onChange={(e) => setImage(e.target.value)}
+						value={avatar}
+						onChange={(e) => setAvatar(e.target.value)}
 						className="register_page_fileInput"
 						type="file"
 						placeholder="Your Last Name"
@@ -116,7 +112,7 @@ export default function Register() {
 						type="submit"
 						className="register_page_btn1"
 						onClick={() =>
-							dispatch(register(email, image, password, lastName, firstName))
+							dispatch(register(email, avatar, password, lastName, firstName))
 						}
 					>
 						Register

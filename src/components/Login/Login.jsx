@@ -11,15 +11,11 @@ export default function Login() {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-
+	const userInfo = { email: email, password: password };
 	const loginHandler = async (e) => {
 		e.preventDefault();
 		try {
-			// const params = new URLSearchParams(window.location.search);
-			// const accessToken =
-			// 	localStorage.getItem('ACCESS_TOKEN') || params.get('accessToken');
-
-			let res = await fetch('http://localhost:3003/users/login', {
+			let res = await fetch('http://localhost:3010/user/login', {
 				method: 'POST',
 				body: JSON.stringify({
 					email,
@@ -75,7 +71,7 @@ export default function Login() {
 					<Link to="/">
 						<button
 							className="login_page_btn1"
-							onClick={() => dispatch(logIn(email, password))}
+							onClick={() => dispatch(logIn(userInfo))}
 						>
 							Sing in
 						</button>

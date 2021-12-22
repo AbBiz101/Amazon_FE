@@ -16,7 +16,11 @@ import {
 export const userReducer = (state = initialState.user, action) => {
 	switch (action.type) {
 		case LOG_IN:
-			return { ...state, userName: action.payload };
+			return {
+				...state,
+				email: action.payload.email,
+				password: action.payload.password,
+			};
 		case REGISTER:
 			return {
 				...state,
