@@ -12,7 +12,12 @@
 .objectcont {
 	flex-wrap: wrap;
 	overflow: hidden;
-	justify-content: space-between
+	justify-content: space-evenly
+}
+.objectcont_1 {
+	flex-wrap: wrap;
+	overflow: hidden;
+	justify-content: left
 }
 
 .carousel-item {

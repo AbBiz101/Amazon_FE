@@ -9,7 +9,7 @@ export default function ProductCompOne({ item }) {
 	const dispatch = useDispatch();
 
 	return (
-		<div className="product_comp_one col-sm-6 col-md-4 col-lg-3">
+		<div className="product_comp_one mx-1 mb-3 col-sm-6 col-md-4 col-lg-3 col-xl-2">
 			<h4 className="product_name">{item.productCategory}</h4>
 			<img className="product_img" alt="productImg" src={item.productImg} />
 			<a className="product_description" onClick={() => history('/detail')}>

@@ -6,10 +6,10 @@ import Register from './components/Register/Register';
 import DetailPage from './components/DetailPage/DetailPage';
 import BackOffice from './components/BackOffice/BackOffice';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
-
+import { Container } from 'react-bootstrap';
 export default function App() {
 	return (
-		<div className="container">
+		<div className="container-fluid px-0 mx-0">
 			<BrowserRouter>
 				<Navbar />
 				<Routes>
