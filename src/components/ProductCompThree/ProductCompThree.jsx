@@ -2,7 +2,7 @@ import './ProductCompThree.css';
 
 export default function ProductCompThree() {
 	return (
-		<div className="product_comp_three">
+		<div className="col-md-5 d-none d-md-block product_comp_three">
 			<h4>Recently viewed </h4>
 			<div className="recently_viewed_items">
 				<div className="recently_viewed">

@@ -9,6 +9,7 @@ export const SEARCH_RESET = 'SEARCH_RESET';
 export const ADD_TO_CART = 'ADD_TO_CART';
 export const REGISTER = 'REGISTER';
 export const LOG_IN = 'LOG_IN';
+const url = 'https://amazon-be-completed.herokuapp.com/';
 
 export const removeFromCart = (index) => ({
 	type: REMOVE_FROM_CART,
@@ -35,15 +36,15 @@ export const getAllProducts = () => {
 		searchReset();
 		try {
 			const resp = await fetch(
-				'https://strive-jobs-api.herokuapp.com/jobs?limit=10',
-			);
+				`https://amazon-be-completed.herokuapp.com/product`,
+			); //?limit=30
 			if (resp.ok) {
 				const data = await resp.json();
+				console.log(data);
 				dispatch({
 					type: GET_PRODUCTS,
-					payload: data.data,
+					payload: data,
 				});
-
 				dispatch({ type: TOGGLE_LOADER, payload: false });
 			} else {
 				console.log('Error fetching.');
@@ -62,7 +63,7 @@ export const searchProducts = (name) => {
 	return async (dispatch) => {
 		try {
 			const resp = await fetch(
-				'https://strive-jobs-api.herokuapp.com/jobs?search=' +
+				`https://amazon-be-completed.herokuapp.com/product/search=` +
 					name +
 					'&limit=15',
 			);

@@ -2,25 +2,21 @@ import './ProductCompOne.css';
 import { addToCar } from '../../Redux/Action/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
-
+import { useNavigate } from 'react-router';
 export default function ProductCompOne({ item }) {
 	const userName = useSelector((state) => state.user.userName);
+	const history = useNavigate();
 	const dispatch = useDispatch();
 
 	return (
-		<div className="product_comp_one">
-			<h4 className="product_name">Title</h4>
-			<img
-				className="product_img"
-				alt=""
-				src="https://images.unsplash.com/photo-1637966495998-23d7fb7e03be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-			/>
-			<p className="product_description" style={{ textoverflow: 'ellipsis' }}>
-				Gifts for Men, Magnetic Bracelet Craftsman – Best Men Gifts, Magnetic
-				Bracelet Tool with 15 Magnets,Gifts for Men,
-			</p>
+		<div className="product_comp_one col-sm-6 col-md-4 col-lg-3">
+			<h4 className="product_name">{item.productCategory}</h4>
+			<img className="product_img" alt="productImg" src={item.productImg} />
+			<a className="product_description" onClick={() => history('/detail')}>
+				{item.productDescription}
+			</a>
 			<h6 className="product_price">
-				€ <strong>25.00</strong>
+				€<strong>{item.productPrice}</strong>
 			</h6>
 			<h6 className="product_rating">
 				<AiFillStar style={{ color: '#aa9115' }} />
@@ -34,7 +30,9 @@ export default function ProductCompOne({ item }) {
 					Add To Basket
 				</button>
 			) : (
-				<h4>Log in to add items to your cart!</h4>
+				<button onClick={() => history('/login')} className="add_product_btn">
+					Login to buy items!
+				</button>
 			)}
 		</div>
 	);
