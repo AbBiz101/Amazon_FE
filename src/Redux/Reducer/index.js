@@ -11,6 +11,15 @@ import {
 	ADD_TO_CART,
 	REGISTER,
 	LOG_IN,
+	GET_A_PRODUCT_ERROR,
+	A_PRODUCT_LOADER,
+	GET_A_PRODUCT,
+	CREATE_PRODUCT,
+	UPDATE_PRODUCT,
+	DELETE_PRODUCT,
+	GET_ALL_COMMENTS,
+	GET_ALL_COMMENTS_ERROR,
+	GET_ALL_COMMENTS_LOADER,
 } from '../Action/index';
 
 export const userReducer = (state = initialState.user, action) => {
@@ -51,8 +60,35 @@ export const productReducer = (state = initialState.product, action) => {
 			return { ...state, stock: action.payload };
 		case TOGGLE_LOADER:
 			return { ...state, isLoading: action.payload };
-		case GET_PRODUCTS_ERROR:
+		default:
+			return state;
+	}
+};
+
+export const singleProductReducer = (
+	state = initialState.singleProduct,
+	action,
+) => {
+	switch (action.type) {
+		case GET_A_PRODUCT:
+			return { product: action.payload };
+		case A_PRODUCT_LOADER:
+			return { ...state, isLoading: action.payload };
+		case GET_A_PRODUCT_ERROR:
 			return { ...state, isError: action.payload };
+		default:
+			return state;
+	}
+};
+
+export const commentsReducer = (state = initialState.comments, action) => {
+	switch (action.type) {
+		case GET_ALL_COMMENTS:
+			return { ...state, comments: action.payload };
+		case GET_ALL_COMMENTS_LOADER:
+			return { ...state, isLoading: action.payload };
+		case GET_ALL_COMMENTS_ERROR:
+			return { ...state, isLoading: action.payload };
 		default:
 			return state;
 	}
@@ -72,3 +108,7 @@ export const searchReducer = (state = initialState.search, action) => {
 			return state;
 	}
 };
+
+// export const userRegisterReducer = (state = initialState.user, action) => { };
+
+// export const userRegisterReducer = (state = initialState.user, action) => {};

@@ -3,18 +3,25 @@ import { addToCar } from '../../Redux/Action/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { useNavigate } from 'react-router';
+
 export default function ProductCompOne({ item }) {
 	const userName = useSelector((state) => state.user.userName);
 	const history = useNavigate();
 	const dispatch = useDispatch();
-
 	return (
-		<div className="product_comp_one mx-1 mb-3 col-sm-6 col-md-4 col-lg-3 col-xl-2">
+		<div
+			key={item._id}
+			onClick={() => history(`/detail/?id=${item._id}`)}
+			className="product_comp_one mx-1 mb-3 col-sm-6 col-md-4 col-lg-3 col-xl-2"
+		>
 			<h4 className="product_name">{item.productCategory}</h4>
 			<img className="product_img" alt="productImg" src={item.productImg} />
-			<a className="product_description" onClick={() => history('/detail')}>
+			<p
+				className="product_description"
+				onClick={() => history(`/detail/?id=${item._id}`)}
+			>
 				{item.productDescription}
-			</a>
+			</p>
 			<h6 className="product_price">
 				€<strong>{item.productPrice}</strong>
 			</h6>

@@ -17,17 +17,20 @@ export default function Register() {
 	const registerHandler = async (e) => {
 		e.preventDefault();
 		try {
-			let res = await fetch('http://localhost:3010/user/register', {
-				method: 'POST',
-				body: JSON.stringify({
-					email,
-					password,
-					firstName,
-					lastName,
-					avatar,
-				}),
-				headers: { 'Content-Type': 'application/json' },
-			});
+			let res = await fetch(
+				'https://amazon-be-completed.herokuapp.com/user/register',
+				{
+					method: 'POST',
+					body: JSON.stringify({
+						email,
+						password,
+						firstName,
+						lastName,
+						avatar,
+					}),
+					headers: { 'Content-Type': 'application/json' },
+				},
+			);
 
 			if (res.ok) {
 				let data = await res.json();
@@ -66,7 +69,7 @@ export default function Register() {
 					<h5 className="register_page_label">Last Name</h5>
 					<input
 						value={lastName}
-						onChange={(e) => setLastName(e.target.value)}
+						onChange={(e) => console.log(e.target.value)}
 						className="register_page_input"
 						type="text"
 						required

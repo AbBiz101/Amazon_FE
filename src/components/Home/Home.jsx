@@ -1,8 +1,8 @@
 import './Home.css';
 import { useEffect } from 'react';
-import { Carousel } from 'react-bootstrap';
+import { Carousel, Spinner } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllProducts } from '../../Redux/Action/index';
+import { getAllProducts, searchProducts } from '../../Redux/Action/index';
 import ProductCompOne from '../ProductCompOne/ProductCompOne';
 import ProductCompTwo from '../ProductCompTwo/ProductCompTwo';
 import ProductCompThree from '../ProductCompThree/ProductCompThree';
@@ -12,9 +12,9 @@ export default function Home() {
 	const history = useNavigate();
 	const dispatch = useDispatch();
 	const search = useSelector((state) => state.search.stock);
-	const product = useSelector((state) => state.product.stock);
+	const product = useSelector((state) => state.product.stock.allProducts);
+	const productLoading = useSelector((state) => state.product.stock.isLoading);
 	const searchLoading = useSelector((state) => state.search.isLoading);
-
 	const login = async () => {
 		const params = new URLSearchParams(window.location.search);
 		const accessToken =
@@ -30,6 +30,7 @@ export default function Home() {
 	useEffect(() => {
 		login();
 		dispatch(getAllProducts());
+		dispatch(searchProducts());
 	}, [search]);
 
 	return (
@@ -65,10 +66,18 @@ export default function Home() {
 				<ProductCompThree />
 			</div>
 
-			<div className="container-fluid objectcont mt-5 px-0 d-flex">
-				{searchLoading
-					? product.map((item) => <ProductCompOne item={item} />)
-					: search.map((item) => <ProductCompOne item={item} />)}
+			<div className="container-fluid objectcont_1 mt-5 px-0 d-flex">
+				{productLoading ? (
+					<Spinner animation="border" role="status">
+						<span className="visually-hidden">Loading...</span>
+					</Spinner>
+				) : (
+					<>
+						{!searchLoading
+							? product.map((item) => <ProductCompOne item={item} />)
+							: search.map((item) => <ProductCompOne item={item} />)}
+					</>
+				)}
 			</div>
 		</div>
 	);
