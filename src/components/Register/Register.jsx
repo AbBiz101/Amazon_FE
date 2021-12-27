@@ -53,7 +53,7 @@ export default function Register() {
 				src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2000px-Amazon_logo.svg.png"
 			/>
 			<div className="register_page">
-				<form onSubmit={registerHandler}  className="register_page_form">
+				<form onSubmit={registerHandler} className="register_page_form">
 					<h1 className="register_page_title">Register</h1>
 
 					<h5 className="register_page_label">First Name</h5>
@@ -69,7 +69,7 @@ export default function Register() {
 					<h5 className="register_page_label">Last Name</h5>
 					<input
 						value={lastName}
-						onChange={(e) => console.log(e.target.value)}
+						onChange={(e) => setLastName(e.target.value)}
 						className="register_page_input"
 						type="text"
 						required

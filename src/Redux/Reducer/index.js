@@ -25,11 +25,7 @@ import {
 export const userReducer = (state = initialState.user, action) => {
 	switch (action.type) {
 		case LOG_IN:
-			return {
-				...state,
-				email: action.payload.email,
-				password: action.payload.password,
-			};
+			return (state = action.payload);
 		case REGISTER:
 			return {
 				...state,
@@ -112,3 +108,12 @@ export const searchReducer = (state = initialState.search, action) => {
 // export const userRegisterReducer = (state = initialState.user, action) => { };
 
 // export const userRegisterReducer = (state = initialState.user, action) => {};
+
+// firstName: action.payload.firstName,
+// 				lastName: action.payload.lastName,
+// 				avatar: action.payload.avatar,
+// 				email: action.payload.email,
+// 				role: action.payload.role,
+// 				cart: action.payload.cart,
+// 				_id: action.payload._id,
+// 			};

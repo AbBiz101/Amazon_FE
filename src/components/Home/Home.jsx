@@ -13,8 +13,9 @@ export default function Home() {
 	const dispatch = useDispatch();
 	const search = useSelector((state) => state.search.stock);
 	const product = useSelector((state) => state.product.stock.allProducts);
-	const productLoading = useSelector((state) => state.product.stock.isLoading);
+	const productLoading = useSelector((state) => state.product.isLoading);
 	const searchLoading = useSelector((state) => state.search.isLoading);
+
 	const login = async () => {
 		const params = new URLSearchParams(window.location.search);
 		const accessToken =
@@ -27,11 +28,12 @@ export default function Home() {
 		}
 	};
 
+	
 	useEffect(() => {
 		login();
-		dispatch(getAllProducts());
 		dispatch(searchProducts());
-	}, [search]);
+		dispatch(getAllProducts());
+	}, []);
 
 	return (
 		<div>
@@ -82,3 +84,12 @@ export default function Home() {
 		</div>
 	);
 }
+
+/*
+
+{
+	comments.map((x) => <ListGroup.Item>{x}</ListGroup.Item>);
+}
+
+ {!searchLoading
+							: search.map((item) => <ProductCompOne item={item} />)} */

@@ -21,10 +21,38 @@ export const SEARCH_RESET = 'SEARCH_RESET';
 export const REGISTER = 'REGISTER';
 export const LOG_IN = 'LOG_IN';
 
+export const POST_COMMENT = 'POST_COMMENT';
+
 export const CREATE_PRODUCT = 'CREATE_PRODUCT';
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 const url = 'https://amazon-be-completed.herokuapp.com/';
+
+export const giveComment = (id, comment, userID) => {
+	return async (dispatch) => {
+		try {
+			const resp = await fetch(
+				`https://amazon-be-completed.herokuapp.com/product/${id}/comments`,
+			);
+			if (resp.ok) {
+				const data = await resp.json();
+				dispatch({
+					type: GET_PRODUCTS,
+					payload: data,
+				});
+				dispatch({ type: TOGGLE_LOADER, payload: false });
+			} else {
+				console.log('Error fetching.');
+				dispatch({ type: GET_PRODUCTS_ERROR });
+				dispatch({ type: TOGGLE_LOADER, payload: false });
+			}
+		} catch (error) {
+			console.log(error);
+			dispatch({ type: GET_PRODUCTS_ERROR });
+			dispatch({ type: TOGGLE_LOADER, payload: false });
+		}
+	};
+};
 
 export const removeFromCart = (index) => ({
 	type: REMOVE_FROM_CART,
@@ -40,6 +68,8 @@ export const logIn = (userInfo) => ({
 	type: LOG_IN,
 	payload: userInfo,
 });
+
+export const getUserData = () => {};
 
 export const register = (userInfo) => ({
 	type: REGISTER,
@@ -104,9 +134,7 @@ export const searchProducts = (name) => {
 	return async (dispatch) => {
 		try {
 			const resp = await fetch(
-				`https://amazon-be-completed.herokuapp.com/product/search=` +
-					name +
-					'&limit=15',
+				`https://amazon-be-completed.herokuapp.com/product/search=${name}`,
 			);
 			if (resp.ok) {
 				const data = await resp.json();
