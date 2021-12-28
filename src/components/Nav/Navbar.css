@@ -72,7 +72,12 @@
 	align-items: center;
 	justify-content: space-between;
 }
-
+.bbttnn {
+	margin-right: 50px;
+	background-color: #ecb66f !important;
+	border: #ecb66f !important;
+	color: black !important;
+}
 .show > .btn-primary.dropdown-toggle:focus {
 	box-shadow: 0 0 0 0 !important;
 }

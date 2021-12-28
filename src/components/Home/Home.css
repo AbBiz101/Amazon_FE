@@ -13,6 +13,7 @@
 	flex-wrap: wrap;
 	overflow: hidden;
 	justify-content: space-evenly;
+	margin-bottom: 10px;
 }
 .objectcont_1 {
 	flex-wrap: wrap;

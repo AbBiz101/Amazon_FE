@@ -44,7 +44,7 @@ export default function ProductCompOne({ item }) {
 			key={item._id}
 			className="product_comp_one mx-1 mb-3 col-sm-6 col-md-4 col-lg-3 col-xl-2"
 		>
-			<h4 className="product_name">{item.productCategory}</h4>
+			<h4 className="product_name">{item.productName}</h4>
 			<img
 				onClick={() => history(`/detail/?id=${item._id}`)}
 				className="product_img"
@@ -60,6 +60,7 @@ export default function ProductCompOne({ item }) {
 			<h6 className="product_price">
 				€<strong>{item.productPrice}</strong>
 			</h6>
+			<h6 className="product_price">{item.productCategory}</h6>
 			<h6 className="product_rating">
 				<AiFillStar style={{ color: '#aa9115' }} />
 				<AiOutlineStar style={{ color: '#aa9115' }} />

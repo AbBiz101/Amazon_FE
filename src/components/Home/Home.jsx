@@ -28,7 +28,6 @@ export default function Home() {
 		}
 	};
 
-	
 	useEffect(() => {
 		login();
 		dispatch(searchProducts());
@@ -63,12 +62,12 @@ export default function Home() {
 				</Carousel.Item>
 			</Carousel>
 
-			<div className="container-fluid objectcont mt-5 px-0 d-flex">
+			<div className="container-fluid objectcont px-0 d-flex">
 				<ProductCompTwo />
 				<ProductCompThree />
 			</div>
-
-			<div className="container-fluid objectcont_1 mt-5 px-0 d-flex">
+			<br />
+			<div className="container-fluid objectcont_1 px-0 d-flex">
 				{productLoading ? (
 					<Spinner animation="border" role="status">
 						<span className="visually-hidden">Loading...</span>
