@@ -36,7 +36,7 @@ export default function Login() {
 				console.log(data);
 				history('/home');
 			} else {
-				history('/');
+				history('/login');
 			}
 		} catch (error) {
 			history('/');

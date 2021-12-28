@@ -79,7 +79,7 @@ export default function NavBar() {
 						<BsSearch size={20} className="header_search_icon" />
 					</div>
 
-					{!role ? (
+					{role ? (
 						<div className="mt-2 header_options">
 							<div className="d-none d-lg-block header_options_1">
 								<span className="d-inline">Returns &</span>
