@@ -39,7 +39,7 @@ export default function Login() {
 				history('/login');
 			}
 		} catch (error) {
-			history('/');
+			history('/login');
 			console.log(error);
 		}
 	};

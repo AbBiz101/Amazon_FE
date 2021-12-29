@@ -24,7 +24,7 @@ export default function NavBar() {
 	const dispatch = useDispatch();
 	const role = useSelector((state) => state.user.role);
 	const firstName = useSelector((state) => state.user.firstName);
-	const cartLength = useSelector((state) => state.user.cart.length);
+	// const cartLength = useSelector((state) => state.user.cart.length);
 	console.log(role);
 	return (
 		<>
@@ -90,7 +90,7 @@ export default function NavBar() {
 								<Link to="/checkout">
 									<h4 className="mt-1">
 										<RiShoppingCartLine size={35} />
-										{cartLength}
+										{/* {cartLength} */}
 									</h4>
 								</Link>
 							</div>
