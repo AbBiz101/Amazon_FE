@@ -11,7 +11,7 @@ export default function Login() {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	
+
 	const userInfo = { email: email, password: password };
 
 	const loginHandler = async (e) => {
@@ -96,7 +96,8 @@ export default function Login() {
 					>
 						Create Your Amazon Account
 					</button>
-					<a href="http://localhost:3003/users/googleLogin">
+
+					<a href="https://amazon-be-completed.herokuapp.com/user/googleLogin">
 						<button type="button" className="login_page_btn2">
 							<img
 								alt=""
