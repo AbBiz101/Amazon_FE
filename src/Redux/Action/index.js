@@ -20,6 +20,7 @@ export const ADD_TO_CART = 'ADD_TO_CART';
 export const SEARCH_RESET = 'SEARCH_RESET';
 export const REGISTER = 'REGISTER';
 export const LOG_IN = 'LOG_IN';
+export const LOG_OUT = 'LOG_OUT';
 
 export const POST_COMMENT = 'POST_COMMENT';
 
@@ -67,6 +68,11 @@ export const addToCar = (toAdd) => ({
 export const logIn = (userInfo) => ({
 	type: LOG_IN,
 	payload: userInfo,
+});
+
+export const logout = () => ({
+	type: LOG_OUT,
+	payload: {},
 });
 
 export const getUserData = () => {};

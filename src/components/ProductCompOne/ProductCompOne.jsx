@@ -8,7 +8,7 @@ import { Form } from 'react-bootstrap';
 export default function ProductCompOne({ item }) {
 	const [show, setShow] = useState(false);
 	const [comment, setComment] = useState('');
-	const firstName = useSelector((state) => state.user.firstName);
+	const firstName = useSelector((state) => state.user.email);
 	const history = useNavigate();
 	const dispatch = useDispatch();
 

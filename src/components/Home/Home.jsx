@@ -32,7 +32,7 @@ export default function Home() {
 		login();
 		dispatch(searchProducts());
 		dispatch(getAllProducts());
-	}, []);
+	}, [search]);
 
 	return (
 		<div>

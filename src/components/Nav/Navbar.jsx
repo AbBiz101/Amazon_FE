@@ -3,6 +3,7 @@ import {
 	searchProducts,
 	getAllProducts,
 	searchReset,
+	logout,
 } from '../../Redux/Action/index';
 import { Link } from 'react-router-dom';
 import {
@@ -22,10 +23,10 @@ import { DropdownButton, Dropdown, SplitButton } from 'react-bootstrap';
 export default function NavBar() {
 	const history = useNavigate();
 	const dispatch = useDispatch();
+	const user = useSelector((state) => state.user);
 	const role = useSelector((state) => state.user.role);
 	const firstName = useSelector((state) => state.user.firstName);
-	// const cartLength = useSelector((state) => state.user.cart.length);
-	console.log(role);
+	const email = useSelector((state) => state.user.email);
 	return (
 		<>
 			<div className="container-fluid px-0 xxxx">
@@ -90,7 +91,7 @@ export default function NavBar() {
 								<Link to="/checkout">
 									<h4 className="mt-1">
 										<RiShoppingCartLine size={35} />
-										{/* {cartLength} */}
+										{user.cart.length}
 									</h4>
 								</Link>
 							</div>
@@ -100,11 +101,11 @@ export default function NavBar() {
 									className="header_options_3"
 									key="left"
 									drop="left"
-									title="USER"
+									title={firstName}
 								>
-									<Dropdown.Item eventKey="1">Action</Dropdown.Item>
-									<Dropdown.Item eventKey="2">Another action</Dropdown.Item>
-									<Dropdown.Item onClick={() => dispatch()} eventKey="4">
+									<Dropdown.Item>Action</Dropdown.Item>
+									<Dropdown.Item>Another action</Dropdown.Item>
+									<Dropdown.Item onClick={() => dispatch(logout())}>
 										Logout
 									</Dropdown.Item>
 								</SplitButton>

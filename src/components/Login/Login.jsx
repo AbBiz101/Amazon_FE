@@ -11,30 +11,34 @@ export default function Login() {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
+	const [lastName, setLastName] = useState('');
+	const [firstName, setFirstName] = useState('');
+	const [avatar, setAvatar] = useState('');
+	const [role, setRole] = useState('');
+	const [cart, setCart] = useState([]);
+	const [_id, setId] = useState('');
 
-	const userInfo = { email: email, password: password };
-
+	const userInfo = { email, lastName, firstName, avatar, role, cart, _id };
 	const loginHandler = async (e) => {
+		console.log(212212);
 		e.preventDefault();
 		try {
-			let res = await fetch(
-				'https://amazon-be-completed.herokuapp.com/user/login',
-				{
-					method: 'POST',
-					body: JSON.stringify({
-						email,
-						password,
-					}),
-					headers: { 'Content-Type': 'application/json' },
-				},
-			);
+			let res = await fetch('http://localhost:3010/user/login', {
+				method: 'POST',
+				body: JSON.stringify({
+					email,
+					password,
+				}),
+				headers: { 'Content-Type': 'application/json' },
+			});
 
 			if (res.ok) {
 				let data = await res.json();
+				console.log(data);
 				localStorage.setItem('accessToken', data.accessToken);
 				localStorage.setItem('refreshToken', data.refreshToken);
-				console.log(data);
-				history('/home');
+				dispatch(logIn(data.user));
+				history('/');
 			} else {
 				history('/login');
 			}
@@ -45,14 +49,14 @@ export default function Login() {
 	};
 
 	return (
-		<div onSubmit={loginHandler} className="login_container">
+		<div className="login_container">
 			<img
 				className="login_logo"
 				alt=""
 				src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a9/Amazon_logo.svg/2000px-Amazon_logo.svg.png"
 			/>
 			<div className="login_page">
-				<form className="login_page_form">
+				<form onSubmit={loginHandler} className="login_page_form">
 					<h1 className="login_page_title">Sign in</h1>
 					<h5 className="login_page_label">E-mail(phone for mobile account)</h5>
 					<input
@@ -73,14 +77,10 @@ export default function Login() {
 						type="password"
 						placeholder="Password"
 					/>
-					<Link to="/">
-						<button
-							className="login_page_btn1"
-							onClick={() => dispatch(logIn(userInfo))}
-						>
-							Sing in
-						</button>
-					</Link>
+
+					<button className="login_page_btn1" type="submit">
+						Sing in
+					</button>
 
 					<p className="login_page_text">
 						<input className="mx-2" type="checkbox" />
@@ -96,7 +96,6 @@ export default function Login() {
 					>
 						Create Your Amazon Account
 					</button>
-
 					<a href="https://amazon-be-completed.herokuapp.com/user/googleLogin">
 						<button type="button" className="login_page_btn2">
 							<img
