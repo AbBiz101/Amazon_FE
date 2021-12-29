@@ -1,6 +1,6 @@
 import './login.css';
 import { useState } from 'react';
-import { Form } from 'react-bootstrap';
+import { Form, Alert } from 'react-bootstrap';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
@@ -40,6 +40,7 @@ export default function Login() {
 				dispatch(logIn(data.user));
 				history('/');
 			} else {
+				<Alert variant="danger">Incorrect Username or Password</Alert>;
 				history('/login');
 			}
 		} catch (error) {

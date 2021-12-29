@@ -54,7 +54,8 @@
 
 .add_product_btn {
 	background-color: #ffd814;
-	border-radius: 10px;
+	border-radius: 7px;
+	border: 1px solid rgb(110, 110, 110) !important;
 	margin-top: 10px;
 	border: none;
 	color: black;

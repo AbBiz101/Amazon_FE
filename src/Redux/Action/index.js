@@ -72,7 +72,7 @@ export const logIn = (userInfo) => ({
 
 export const logout = () => ({
 	type: LOG_OUT,
-	payload: {},
+
 });
 
 export const getUserData = () => {};

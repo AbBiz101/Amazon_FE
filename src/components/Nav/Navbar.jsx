@@ -27,6 +27,8 @@ export default function NavBar() {
 	const role = useSelector((state) => state.user.role);
 	const firstName = useSelector((state) => state.user.firstName);
 	const email = useSelector((state) => state.user.email);
+	const cartLength = useSelector((state) => state.user.cart.length);
+	console.log(cartLength);
 	return (
 		<>
 			<div className="container-fluid px-0 xxxx">
@@ -91,7 +93,7 @@ export default function NavBar() {
 								<Link to="/checkout">
 									<h4 className="mt-1">
 										<RiShoppingCartLine size={35} />
-										{user.cart.length}
+										{cartLength}
 									</h4>
 								</Link>
 							</div>
