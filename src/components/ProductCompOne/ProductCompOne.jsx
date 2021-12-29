@@ -67,7 +67,7 @@ export default function ProductCompOne({ item }) {
 			</h6>
 			{firstName ? (
 				<button
-					onClick={() => dispatch(addToCar())}
+					onClick={() => dispatch(addToCar(item))}
 					className="add_product_btn"
 				>
 					Add To Basket

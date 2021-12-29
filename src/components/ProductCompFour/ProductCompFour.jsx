@@ -7,16 +7,11 @@ export default function ProductCompFour({ i, item }) {
 
 	return (
 		<div className="product-comp-four">
-			<img
-				alt=""
-				src="https://images.unsplash.com/photo-1637966495998-23d7fb7e03be?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
-			/>
+			<img alt="" src={item.productImg} />
 
 			<div className="product_four_description">
-				<h4>
-					Product img elements must have an alt prop, either with meaningful
-					text, or an empty string for decorative images
-				</h4>
+				<h4>{item.productName}</h4>
+				<h6>{item.productDescription}</h6>
 				<p className="my-0" style={{ color: 'green' }}>
 					In stock
 				</p>
@@ -34,7 +29,7 @@ export default function ProductCompFour({ i, item }) {
 			</div>
 
 			<div className="product_price">
-				<h4>€ Price</h4>
+				<h5>Price-€{item.productPrice}</h5>
 			</div>
 		</div>
 	);

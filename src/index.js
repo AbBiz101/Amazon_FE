@@ -10,13 +10,13 @@ import { PersistGate } from 'redux-persist/integration/react';
 
 ReactDOM.render(
 	<Provider store={configStore}>
-		<App />
+		<PersistGate persistor={persistor} loading={<div>LOADING...</div>}>
+			<App />
+		</PersistGate>
 	</Provider>,
 	document.getElementById('root'),
 );
 
 reportWebVitals();
 {
-	/* <PersistGate persistor={persistor} loading={<div>LOADING...</div>}>
-		</PersistGate> */
 }

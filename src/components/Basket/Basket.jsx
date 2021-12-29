@@ -32,7 +32,12 @@ export default function Basket() {
 				<h4 className="mx-3 mt-1 basket_title">
 					Subtotal ({cartLength} items): €
 					<strong>
-						{cartLength ? cart.reduce((acc, item) => acc +  0) : 0}
+						{cartLength
+							? cart.reduce(
+									(acc, item) => acc + parseFloat(item.productPrice),
+									0,
+							  )
+							: 0}
 					</strong>
 				</h4>
 				<div className="my-3">

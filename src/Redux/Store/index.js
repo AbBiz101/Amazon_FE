@@ -49,6 +49,6 @@ const configStore = createStore(
 	),
 );
 
-// export const persistor = persistStore(configStore);
+export const persistor = persistStore(configStore);
 
 export default configStore;
