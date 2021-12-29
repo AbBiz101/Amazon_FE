@@ -23,14 +23,17 @@ export default function Login() {
 		console.log(212212);
 		e.preventDefault();
 		try {
-			let res = await fetch('http://localhost:3010/user/login', {
-				method: 'POST',
-				body: JSON.stringify({
-					email,
-					password,
-				}),
-				headers: { 'Content-Type': 'application/json' },
-			});
+			let res = await fetch(
+				'https://amazon-be-completed.herokuapp.com/user/login',
+				{
+					method: 'POST',
+					body: JSON.stringify({
+						email,
+						password,
+					}),
+					headers: { 'Content-Type': 'application/json' },
+				},
+			);
 
 			if (res.ok) {
 				let data = await res.json();
