@@ -8,7 +8,7 @@ import { Form } from 'react-bootstrap';
 export default function ProductCompOne({ item }) {
 	const [show, setShow] = useState(false);
 	const [comment, setComment] = useState('');
-	const userName = useSelector((state) => state.user.userName);
+	const firstName = useSelector((state) => state.user.firstName);
 	const history = useNavigate();
 	const dispatch = useDispatch();
 
@@ -65,7 +65,7 @@ export default function ProductCompOne({ item }) {
 				<AiFillStar style={{ color: '#aa9115' }} />
 				<AiOutlineStar style={{ color: '#aa9115' }} />
 			</h6>
-			{userName ? (
+			{firstName ? (
 				<button
 					onClick={() => dispatch(addToCar())}
 					className="add_product_btn"
@@ -77,25 +77,27 @@ export default function ProductCompOne({ item }) {
 					Login to buy items!
 				</button>
 			)}
-
-			<p onClick={() => setShow(!show)} className="comment_toggle">
-				comment
-			</p>
-			{show ? (
-				<div on submit={commentHandler} className="comment_section">
-					<Form.Control
-						value={comment}
-						onChange={(e) => setComment(e.target.value)}
-						type="email"
-						placeholder="Enter your comment"
-					/>
-					<button type="submit">send</button>
-				</div>
-			) : null}
+			{firstName ? (
+				<>
+					<p onClick={() => setShow(!show)} className="comment_toggle">
+						comment
+					</p>
+					{show ? (
+						<div on submit={commentHandler} className="comment_section">
+							<Form.Control
+								value={comment}
+								onChange={(e) => setComment(e.target.value)}
+								type="email"
+								placeholder="Enter your comment"
+							/>
+							<button type="submit">send</button>
+						</div>
+					) : null}
+				</>
+			) : (
+				<></>
+			)}
 		</div>
 	);
 }
 
-// https://res.cloudinary.com/db8gmza63/image/upload/v1640606298/Amazon/mokz0oqmiwovs52hld2r.jpg
-//https://res.cloudinary.com/db8gmza63/image/upload/v1640606333/Amazon/tgjulkypwjm0r6akukeo.jpg
-//https://res.cloudinary.com/db8gmza63/image/upload/v1640606359/Amazon/j5h8b3uz51ilpuwlz68o.png

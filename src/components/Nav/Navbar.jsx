@@ -39,7 +39,7 @@ export default function NavBar() {
 								src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
 							/>
 						</Link>
-						{!role ? (
+						{!firstName ? (
 							<></>
 						) : (
 							<div className="d-none d-xl-block header_user_location">
@@ -49,7 +49,7 @@ export default function NavBar() {
 								</div>
 							</div>
 						)}
-						{role === 'USER' ? (
+						{role === 'ADMIN' ? (
 							<div className="d-none d-md-inline mt-3 header_back_office">
 								<h6 onClick={(e) => history('/backOffice')}>Back Office</h6>
 							</div>
@@ -79,7 +79,7 @@ export default function NavBar() {
 						<BsSearch size={20} className="header_search_icon" />
 					</div>
 
-					{role ? (
+					{firstName ? (
 						<div className="mt-2 header_options">
 							<div className="d-none d-lg-block header_options_1">
 								<span className="d-inline">Returns &</span>
