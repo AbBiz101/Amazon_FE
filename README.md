@@ -1,10 +1,10 @@
-# Getting Started with Create React App
+# Amazon clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is cloen of amazon. bootstrapped with [Create React App].
 
-## Available Scripts
+## Technologies applied 
 
-In the project directory, you can run:
+In the project javaScript, Bootstrape, React, Redux were used.
 
 ### `npm start`
 
