@@ -1,6 +1,6 @@
 # Amazon clone
 
-This project is cloen of amazon. bootstrapped with [Create React App].
+This project is cloen of amazon marketplace.
 
 ## Technologies applied 
 
