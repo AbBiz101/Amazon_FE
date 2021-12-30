@@ -16,16 +16,7 @@ export default function BackOffice() {
 	let img;
 
 	const imageHandler = async (e) => {
-		let formDt = new FormData();
-		formDt.append('product', image);
-		const xx = fetch(
-			'https://amazon-be-completed.herokuapp.com/product/Image',
-			{
-				method: 'POST',
-				body: formDt,
-			},
-		).then((res) => console.log(res));
-
+		console.log(2222);
 		// try {
 		// 	let formDt = new FormData();
 		// 	formDt.append('product', image);
@@ -81,24 +72,29 @@ export default function BackOffice() {
 		<div>
 			<div className="offset-md-3 offset-sm-0 col-6 backOffice_form">
 				<h3>Product Details</h3>
-				<div className="d-flex" onClick={(e) => imageHandler()}>
-					<Form.Group
-						onSubmit={imageHandler}
-						controlId="exampleForm.ControlInput1"
-					>
-						<Form.Label>Image</Form.Label>
-						<Form.Control
-							required
-							type="file"
-							accept="image/png, image/jpeg"
-							placeholder="Product name"
-							onChange={(e) => setImage(e.target.files[0])}
+				<div
+					className="image_containin_box d-flex"
+					onClick={(e) => imageHandler()}
+				>
+					<Form.Label>Image</Form.Label>
+					<div className=" d-flex">
+						<Form.Group
 							onSubmit={imageHandler}
-						/>
-					</Form.Group>
-					<Button className="mt-3" type="submit">
-						Submit
-					</Button>
+							controlId="exampleForm.ControlInput1"
+						>
+							<Form.Control
+								required
+								type="file"
+								accept="image/png, image/jpeg"
+								placeholder="Product name"
+								onChange={(e) => setImage(e.target.files[0])}
+								onSubmit={imageHandler}
+							/>
+						</Form.Group>
+						<button className="obj_image_provider" type="submit">
+							Add image
+						</button>
+					</div>
 				</div>
 
 				<Form onSubmit={registerHandler}>
@@ -150,9 +146,9 @@ export default function BackOffice() {
 						/>
 					</Form.Group>
 
-					<Button className="mt-3" type="submit">
-						Submit
-					</Button>
+					<button className="obj_image_provider mt-3" type="submit">
+						Add Object
+					</button>
 				</Form>
 			</div>
 		</div>

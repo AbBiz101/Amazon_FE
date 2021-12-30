@@ -8,3 +8,12 @@
 .user_img {
 	width: 40%;
 }
+
+.user_image_provider {
+	margin-top: 78%;
+	height: 35px;
+	border: 1px solid rgb(148, 148, 148);
+	background-color: #ffd814;
+	border-radius: 5px;
+	color: black;
+}

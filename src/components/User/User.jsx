@@ -41,7 +41,16 @@ export default function User() {
 
 	return (
 		<div className="login_container">
-			<img className="login_logo" alt="" src={user.avatar} />
+			<div>
+				<img
+					className="user_image_provider_2 login_logo"
+					alt=""
+					src={user.avatar}
+				/>
+				<button className="mx-2 user_image_provider" type="submit">
+					Update
+				</button>
+			</div>
 			<div className="login_page">
 				<form onSubmit={updateHandler} className="login_page_form">
 					<input

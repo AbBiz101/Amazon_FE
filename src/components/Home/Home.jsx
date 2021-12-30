@@ -17,20 +17,43 @@ export default function Home() {
 	const productLoading = useSelector((state) => state.product.isLoading);
 	const searchLoading = useSelector((state) => state.search.isLoading);
 
-	const login = async () => {
+	const cheOauthLogin = async () => {
 		const params = new URLSearchParams(window.location.search);
-		const accessToken =
-			localStorage.getItem('ACCESS_TOKEN') || params.get('accessToken');
+		const accessToken = params.get('accessToken');
+		try {
+			let req = fetch('http://localhost:3011/user/getUser', {
+				headers: { authorization: accessToken },
+			});
 
-		if (!accessToken) {
-			history('/');
-		} else if (params.get('accessToken')) {
-			history('/home');
+			if (req.ok) {
+				const data = req.json();
+				console.log(data);
+			} else {
+			}
+		} catch (error) {
+			console.log(error);
+		}
+		// retrieve the tokens from the URLSearchParams
+		// request user DAta from the backend and
+		// set localstorage tokens
+		// set store with user data
+
+		if (accessToken) {
 		}
 	};
 
+	//With email and password requesting data fro m  your back end,
+	// then you are setting the store with your user data
+	// and the localstorage with  the access and refreshTokens
+
 	useEffect(() => {
-		login();
+		//Check if access params exist and
+		// if exist set the user to the store and the localstorage access and refresh tokens
+		//if doesnt exists do nothing
+	}, []);
+
+	useEffect(() => {
+		cheOauthLogin(); // What is the goal? Check if the user the is logged? Or check if the user is comming from Google Oauth?
 		dispatch(searchProducts());
 		dispatch(getAllProducts());
 	}, [search]);

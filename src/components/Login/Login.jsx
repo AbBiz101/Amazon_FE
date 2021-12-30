@@ -10,22 +10,23 @@ export default function Login() {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	
+
 	const loginHandler = async (e) => {
 		console.log(212212);
 		e.preventDefault();
 		try {
-			let res = await fetch(
-				'https://amazon-be-completed.herokuapp.com/user/login',
-				{
-					method: 'POST',
-					body: JSON.stringify({
-						email,
-						password,
-					}),
-					headers: { 'Content-Type': 'application/json' },
-				},
-			);
+
+			//With email and password requesting data fro m  your back end,
+			// then you are setting the store with your user data
+			// and the localstorage with  the access and refreshTokens
+			let res = await fetch('http://localhost:3011/user/login', {
+				method: 'POST',
+				body: JSON.stringify({
+					email,
+					password,
+				}),
+				headers: { 'Content-Type': 'application/json' },
+			});
 
 			if (res.ok) {
 				let data = await res.json();
@@ -92,7 +93,7 @@ export default function Login() {
 					>
 						Create Your Amazon Account
 					</button>
-					<a href="https://amazon-be-completed.herokuapp.com/user/googleLogin">
+					<a href="http://localhost:3011/user/googleLogin">
 						<button type="button" className="login_page_btn2">
 							<img
 								alt=""

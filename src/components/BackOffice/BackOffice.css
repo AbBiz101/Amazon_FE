@@ -2,3 +2,14 @@
 	margin-left: 50px !important;
 	margin-right: 50px;
 } */
+
+.image_containin_box {
+	flex-direction: column;
+}
+
+.obj_image_provider{
+	border: 1px solid rgb(148, 148, 148);
+	background-color: #ffd814;
+	border-radius: 5px;
+	color: black;
+}
