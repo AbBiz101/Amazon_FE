@@ -7,6 +7,7 @@ import DetailPage from './components/DetailPage/DetailPage';
 import User from './components/User/User';
 import BackOffice from './components/BackOffice/BackOffice';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
 export default function App() {
 	return (
 		<div className="container-fluid px-0 mx-0">

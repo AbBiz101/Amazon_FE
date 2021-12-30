@@ -7,6 +7,7 @@ import ProductCompOne from '../ProductCompOne/ProductCompOne';
 import ProductCompTwo from '../ProductCompTwo/ProductCompTwo';
 import ProductCompThree from '../ProductCompThree/ProductCompThree';
 import { useNavigate } from 'react-router';
+import Footer from '../Footer/Footer';
 
 export default function Home() {
 	const history = useNavigate();
@@ -80,6 +81,7 @@ export default function Home() {
 					</>
 				)}
 			</div>
+			<Footer />
 		</div>
 	);
 }

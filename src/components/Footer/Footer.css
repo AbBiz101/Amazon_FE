@@ -1,0 +1,35 @@
+.footerBox {
+	bottom: 0px;
+	/* height: 65px; */
+	background-color: rgb(0, 0, 0);
+	color: aliceblue;
+	z-index: 100;
+}
+.footer_small{justify-content: space-evenly;}
+.footer_text {
+	color: grey;
+}
+
+.footer_text > p {
+	margin: 0px;
+	font-size: 12px;
+}
+.footer_text > h5 {
+	font-size: 15px;
+	font-weight: bolder;
+	margin: 0px;
+}
+
+.footer_small_box {
+	justify-content: space-evenly;
+}
+
+/*
+Conditions of Use & Sale
+
+
+
+
+
+
+*/
