@@ -1,0 +1,10 @@
+.user_box {
+	border: 1px solid black;
+	/* width: 450px;
+	justify-content: center;
+	margin: auto; */
+}
+
+.user_img {
+	width: 40%;
+}

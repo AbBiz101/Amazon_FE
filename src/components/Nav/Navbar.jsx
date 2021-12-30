@@ -6,14 +6,7 @@ import {
 	logout,
 } from '../../Redux/Action/index';
 import { Link } from 'react-router-dom';
-import {
-	Button,
-	Navbar,
-	Nav,
-	NavDropdown,
-	FormControl,
-	Form,
-} from 'react-bootstrap';
+import { Button } from 'react-bootstrap';
 import { BsSearch } from 'react-icons/bs';
 import { useNavigate } from 'react-router';
 import { RiShoppingCartLine } from 'react-icons/ri';
@@ -26,7 +19,6 @@ export default function NavBar() {
 	const user = useSelector((state) => state.user);
 	const role = useSelector((state) => state.user.role);
 	const firstName = useSelector((state) => state.user.firstName);
-	const email = useSelector((state) => state.user.email);
 	const cartLength = useSelector((state) => state.user.cart.length);
 	console.log(cartLength);
 	return (
@@ -105,8 +97,10 @@ export default function NavBar() {
 									drop="left"
 									title={firstName}
 								>
-									<Dropdown.Item>Action</Dropdown.Item>
-									<Dropdown.Item>Another action</Dropdown.Item>
+									<Dropdown.Item onClick={() => history('/me')}>
+										My profile
+									</Dropdown.Item>
+									{/* <Dropdown.Item>Another action</Dropdown.Item> */}
 									<Dropdown.Item onClick={() => dispatch(logout())}>
 										Logout
 									</Dropdown.Item>

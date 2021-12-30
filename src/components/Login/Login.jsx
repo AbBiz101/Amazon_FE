@@ -1,7 +1,6 @@
 import './login.css';
 import { useState } from 'react';
 import { Form, Alert } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
 import { logIn } from '../../Redux/Action/index';
@@ -11,14 +10,7 @@ export default function Login() {
 	const dispatch = useDispatch();
 	const [email, setEmail] = useState('');
 	const [password, setPassword] = useState('');
-	const [lastName, setLastName] = useState('');
-	const [firstName, setFirstName] = useState('');
-	const [avatar, setAvatar] = useState('');
-	const [role, setRole] = useState('');
-	const [cart, setCart] = useState([]);
-	const [_id, setId] = useState('');
-
-	const userInfo = { email, lastName, firstName, avatar, role, cart, _id };
+	
 	const loginHandler = async (e) => {
 		console.log(212212);
 		e.preventDefault();
