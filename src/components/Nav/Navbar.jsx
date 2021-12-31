@@ -20,7 +20,6 @@ export default function NavBar() {
 	const role = useSelector((state) => state.user.role);
 	const firstName = useSelector((state) => state.user.firstName);
 	const cartLength = useSelector((state) => state.user.cart.length);
-	console.log(cartLength);
 	return (
 		<>
 			<div className="container-fluid px-0 xxxx">
@@ -39,7 +38,9 @@ export default function NavBar() {
 						) : (
 							<div className="d-none d-xl-block header_user_location">
 								<div>
-									<span>Deliver to {firstName}</span>
+									<span>
+										Deliver to {firstName} 
+									</span>
 									<h6>Stuttgart 70327‌</h6>
 								</div>
 							</div>

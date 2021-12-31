@@ -5,33 +5,43 @@ import './user.css';
 import { useState } from 'react';
 import { Form, Alert } from 'react-bootstrap';
 import { useNavigate } from 'react-router';
+import  {logIn} from '../../Redux/Action/index.js'
+
 
 export default function User() {
+	const dispatch = useDispatch();
 	const user = useSelector((state) => state.user);
-
+	console.log();
+	const id = user._id;
 	const [email, setEmail] = useState(user.email);
-	const [firstName, setFirstName] = useState(user.firstName);
-	const [lastName, setLastName] = useState(user.lastName);
 	const [image, setImage] = useState(user.avatar);
+	const [lastName, setLastName] = useState(user.lastName);
+	const [firstName, setFirstName] = useState(user.firstName);
+	const accessToken = localStorage.getItem('accessToken');
+
+	const imageHandler = async (e) => { console.log(22)}
+	
 	const updateHandler = async (e) => {
 		e.preventDefault();
-		console.log(email, firstName, lastName);
+		console.log(email, firstName, lastName, accessToken);
 		try {
-			let res = await fetch(
-				'https://amazon-be-completed.herokuapp.com/user/me',
-				{
-					method: 'PUT',
-					body: JSON.stringify({
-						email,
-						firstName,
-						lastName,
-					}),
-					headers: { 'Content-Type': 'application/json' },
+			let res = await fetch('http://localhost:3011/user/me', {
+				method: 'PUT',
+				body: JSON.stringify({
+					email,
+					firstName,
+					lastName,
+					id,
+				}),
+				headers: {
+					'Content-Type': 'application/json',
+					authorization: `Bearer ${accessToken}`,
 				},
-			);
+			});
 
 			if (res.ok) {
 				let data = await res.json();
+				// dispatch(logIn());
 				console.log(data);
 			}
 		} catch (error) {
@@ -41,7 +51,7 @@ export default function User() {
 
 	return (
 		<div className="login_container">
-			<div>
+			<div onSubmit={imageHandler}>
 				<img
 					className="user_image_provider_2 login_logo"
 					alt=""
@@ -62,6 +72,7 @@ export default function User() {
 			</div>
 			<div className="login_page">
 				<form onSubmit={updateHandler} className="login_page_form">
+					<h6>First Name</h6>
 					<input
 						className="login_page_input"
 						type="text"
@@ -69,21 +80,22 @@ export default function User() {
 						value={firstName}
 						onChange={(e) => setFirstName(e.target.value)}
 					/>
+					<h6 className="mt-3">Last Name</h6>
 					<input
-						className="mt-3 login_page_input"
+						className="login_page_input"
 						type="text"
 						placeholder={user.lastName}
 						value={lastName}
 						onChange={(e) => setLastName(e.target.value)}
 					/>
+					<h6 className="mt-3">Email</h6>
 					<input
-						className="mt-3 login_page_input"
+						className="login_page_input"
 						type="email"
 						placeholder={user.email}
 						value={email}
 						onChange={(e) => setEmail(e.target.value)}
 					/>
-
 					<button className="login_page_btn1" type="submit">
 						Update user Info
 					</button>

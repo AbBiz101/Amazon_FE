@@ -18,16 +18,12 @@ export default function BackOffice() {
 		try {
 			let formDt = new FormData();
 			formDt.append('product', image);
-			let res = await fetch(
-				'https://amazon-be-completed.herokuapp.com/product/Image',
-				{
-					method: 'POST',
-					body: formDt,
-				},
-			);
+			let res = await fetch('http://localhost:3011/product/Image', {
+				method: 'POST',
+				body: formDt,
+			});
 			if (res.ok) {
 				const obj = await res.json();
-				console.log(obj);
 				setImageURL(obj.data);
 			}
 		} catch (error) {
@@ -53,6 +49,14 @@ export default function BackOffice() {
 						headers: { 'Content-Type': 'application/json' },
 					},
 				);
+				if (response.ok) {
+					setName('');
+					setPrice('');
+					setCategory('');
+					setDescription('');
+					setImage([]);
+					setImageURL('');
+				}
 			} else {
 				console.log('img loading error');
 			}
@@ -63,25 +67,21 @@ export default function BackOffice() {
 		<div>
 			<div className="offset-md-3 offset-sm-0 col-6 backOffice_form">
 				<h3>Product Details</h3>
-				<div className="image_containin_box d-flex">
+
+				<div
+					onClick={(e) => imageHandler()}
+					className="image_containin_box d-flex"
+				>
 					<Form.Label>Image</Form.Label>
 					<div className=" d-flex">
-						<Form.Group
-							onSubmit={imageHandler}
-							controlId="exampleForm.ControlInput1"
-						>
-							<Form.Control
-								required
-								type="file"
-								accept="image/png, image/jpeg"
-								placeholder="Product name"
-								onChange={(e) => setImage(e.target.files[0])}
-								onSubmit={imageHandler}
-							/>
-						</Form.Group>
-						<button className="obj_image_provider" type="submit">
-							Add image
-						</button>
+						<input
+							required
+							type="file"
+							accept="image/png, image/jpeg"
+							placeholder="Product name"
+							onChange={(e) => setImage(e.target.files[0])}
+						/>
+						<button className="obj_image_provider">Add image</button>
 					</div>
 				</div>
 

@@ -7,6 +7,7 @@ import { useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 
 export default function DetailPage() {
+	const dispatch = useDispatch();
 	const role = useSelector((state) => state.user.role);
 	const product = useSelector((state) => state.singleProduct.product);
 	const loading = useSelector((state) => state.singleProduct.isLoading);
@@ -21,9 +22,11 @@ export default function DetailPage() {
 
 	const [id, setId] = useSearchParams();
 	const val = id.get('id');
-	console.log(comments);
 
-	const dispatch = useDispatch();
+	const imageHandler = async (e) => {
+		e.preventDefault();
+		console.log(222);
+	};
 
 	useEffect(() => {
 		dispatch(getComments(val));
@@ -38,7 +41,7 @@ export default function DetailPage() {
 				<>
 					{role === 'ADMIN' ? (
 						<div className="login_container">
-							<div>
+							<div onSubmit={imageHandler}>
 								<img
 									className="user_image_provider_2 login_logo"
 									alt=""
@@ -50,7 +53,7 @@ export default function DetailPage() {
 									accept="image/png, image/jpeg"
 									placeholder="Product name"
 									onChange={(e) => setImage(e.target.files[0])}
-									//onSubmit={imageHandler}
+									onSubmit={imageHandler}
 								/>
 
 								<button className="obj_image_provider" type="submit">
