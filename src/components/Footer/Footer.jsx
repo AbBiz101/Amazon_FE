@@ -3,7 +3,7 @@ import './Footer.css';
 export default function Footer() {
 	return (
 		<div className="footerBox">
-			<div className="mx-5 footer_small_box d-flex">
+			<div className="mx-5  footer_small_box d-flex">
 				<div className="footer_text">
 					<h5>Amazon Advertising</h5>
 					<p>Find, attract, and </p>
@@ -35,7 +35,7 @@ export default function Footer() {
 				</div>
 			</div>
 
-			<div className="mx-5 footer_small_box mt-3 d-flex">
+			<div className="mx-5 mt-5 footer_small_box mt-3 d-flex">
 				<div className="footer_text">
 					<h5>Kindle Direct Publishing</h5>
 					<p>Indie Digital & Print Publishing</p>
@@ -72,7 +72,8 @@ export default function Footer() {
 					<p>For Business.</p>
 				</div>
 			</div>
-			<div className="mx-5 footer_small mt-3 d-flex">
+
+			<div className="mx-5 mt-5 footer_small mt-3 d-flex">
 				<div className="footer_text">
 					<h5>Conditions of Use & Sale</h5>
 				</div>
@@ -86,9 +87,7 @@ export default function Footer() {
 				<div className="footer_text">
 					<h5>Cookies Notice</h5>
 				</div>
-				<div className="footer_text">
-					<h5>Interest-Based Ads Notice</h5>
-				</div>
+				
 				<div className="footer_text">
 					<h5>© 1996-2021, Amazon.com, Inc. or its affiliates</h5>
 				</div>

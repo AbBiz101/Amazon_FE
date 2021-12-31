@@ -12,6 +12,7 @@ import {
 	REGISTER,
 	LOG_IN,
 	LOG_OUT,
+	REMOVE_A_PRODUCT,
 	GET_A_PRODUCT_ERROR,
 	A_PRODUCT_LOADER,
 	GET_A_PRODUCT,
@@ -28,7 +29,7 @@ export const userReducer = (state = initialState.user, action) => {
 		case LOG_IN:
 			return { ...state, ...action.payload };
 		case LOG_OUT:
-			return (state = initialState.user);
+			return initialState.user;
 		case REGISTER:
 			return {
 				...state,
@@ -75,6 +76,8 @@ export const singleProductReducer = (
 			return { ...state, isLoading: action.payload };
 		case GET_A_PRODUCT_ERROR:
 			return { ...state, isError: action.payload };
+		case REMOVE_A_PRODUCT:
+			return {product:undefined}
 		default:
 			return state;
 	}
@@ -107,4 +110,3 @@ export const searchReducer = (state = initialState.search, action) => {
 			return state;
 	}
 };
-

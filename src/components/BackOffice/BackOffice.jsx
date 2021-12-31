@@ -2,11 +2,13 @@ import React from 'react';
 import './BackOffice.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
+import { useNavigate } from 'react-router';
 import { Form, Button } from 'react-bootstrap';
+import { removeAProduct } from '../../Redux/Action/index.js';
 
 export default function BackOffice() {
 	const dispatch = useDispatch();
-
+	const history = useNavigate();
 	const [productName, setName] = useState('');
 	const [productPrice, setPrice] = useState('');
 	const [productCategory, setCategory] = useState('');
@@ -18,10 +20,13 @@ export default function BackOffice() {
 		try {
 			let formDt = new FormData();
 			formDt.append('product', image);
-			let res = await fetch('http://localhost:3011/product/Image', {
-				method: 'POST',
-				body: formDt,
-			});
+			let res = await fetch(
+				'https://amazon-be-completed.herokuapp.com/product/Image',
+				{
+					method: 'POST',
+					body: formDt,
+				},
+			);
 			if (res.ok) {
 				const obj = await res.json();
 				setImageURL(obj.data);
@@ -50,12 +55,16 @@ export default function BackOffice() {
 					},
 				);
 				if (response.ok) {
-					setName('');
-					setPrice('');
-					setCategory('');
-					setDescription('');
-					setImage([]);
-					setImageURL('');
+					setTimeout(() => {
+						history('/');
+						setName('');
+						setPrice('');
+						setCategory('');
+						setDescription('');
+						setImage([]);
+						setImageURL('');
+						dispatch(removeAProduct());
+					}, 1000);
 				}
 			} else {
 				console.log('img loading error');
@@ -76,6 +85,7 @@ export default function BackOffice() {
 					<div className=" d-flex">
 						<input
 							required
+							onClick={(e) => imageHandler()}
 							type="file"
 							accept="image/png, image/jpeg"
 							placeholder="Product name"

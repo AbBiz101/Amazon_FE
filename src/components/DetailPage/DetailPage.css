@@ -39,3 +39,25 @@
 		margin: auto;
 	}
 }
+
+.toDelete {
+	background-color: rgb(223, 90, 90) !important;
+}
+
+.user_image_editing {
+	width: 350px;
+	margin-right: auto;
+	margin-left: auto;
+}
+
+.object_cont {
+	flex-direction: column;
+	justify-content: space-evenly;
+	border: 1px solid lightgray;
+	background-color: white;
+	border-radius: 5px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+	padding: 20px;
+}

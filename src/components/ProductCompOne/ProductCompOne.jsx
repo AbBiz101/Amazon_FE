@@ -1,5 +1,5 @@
 import './ProductCompOne.css';
-import { addToCar } from '../../Redux/Action/index';
+import { addToCar, getAProduct } from '../../Redux/Action/index';
 import { useDispatch, useSelector } from 'react-redux';
 import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { useNavigate } from 'react-router';
@@ -39,6 +39,11 @@ export default function ProductCompOne({ item }) {
 		}
 	};
 
+	const goToDetail = async (e) => {
+		dispatch(getAProduct(item._id));
+		history(`/detail/?id=${item._id}`);
+	};
+
 	return (
 		<div
 			key={item._id}
@@ -51,10 +56,7 @@ export default function ProductCompOne({ item }) {
 				alt="productImg"
 				src={item.productImg}
 			/>
-			<p
-				className="product_description"
-				onClick={() => history(`/detail/?id=${item._id}`)}
-			>
+			<p className="product_description" onClick={(e) => goToDetail()}>
 				{item.productDescription}
 			</p>
 			<h6 className="product_price">
@@ -100,4 +102,3 @@ export default function ProductCompOne({ item }) {
 		</div>
 	);
 }
-

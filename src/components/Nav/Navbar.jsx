@@ -3,6 +3,7 @@ import {
 	searchProducts,
 	getAllProducts,
 	searchReset,
+	removeAProduct,
 	logout,
 } from '../../Redux/Action/index';
 import { Link } from 'react-router-dom';
@@ -29,7 +30,9 @@ export default function NavBar() {
 							<img
 								className="d-none d-sm-block header_logo"
 								alt=""
-								onClick={() => dispatch(searchReset(), getAllProducts())}
+								onClick={() =>
+									dispatch(removeAProduct())
+								}
 								src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
 							/>
 						</Link>
@@ -38,9 +41,7 @@ export default function NavBar() {
 						) : (
 							<div className="d-none d-xl-block header_user_location">
 								<div>
-									<span>
-										Deliver to {firstName} 
-									</span>
+									<span>Deliver to {firstName}</span>
 									<h6>Stuttgart 70327‌</h6>
 								</div>
 							</div>

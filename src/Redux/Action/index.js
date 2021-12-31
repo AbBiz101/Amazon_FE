@@ -9,6 +9,7 @@ export const GET_PRODUCTS = 'GET_PRODUCTS';
 export const GET_A_PRODUCT_ERROR = 'GET_A_PRODUCT_ERROR';
 export const A_PRODUCT_LOADER = 'A_PRODUCT_LOADER';
 export const GET_A_PRODUCT = 'GET_A_PRODUCT';
+export const REMOVE_A_PRODUCT = 'REMOVE_A_PRODUCT';
 
 export const GET_ALL_COMMENTS = 'GET_ALL_COMMENTS';
 export const GET_ALL_COMMENTS_ERROR = 'GET_ALL_COMMENTS_ERROR';
@@ -72,7 +73,6 @@ export const logIn = (userInfo) => ({
 
 export const logout = () => ({
 	type: LOG_OUT,
-
 });
 
 export const getUserData = () => {};
@@ -117,7 +117,6 @@ export const getAProduct = (id) => {
 			);
 			if (resp.ok) {
 				const data = await resp.json();
-				console.log(data);
 				dispatch({
 					type: GET_A_PRODUCT,
 					payload: data,
@@ -136,6 +135,9 @@ export const getAProduct = (id) => {
 	};
 };
 
+export const removeAProduct = () => ({
+	type: REMOVE_A_PRODUCT,
+});
 export const searchProducts = (name) => {
 	return async (dispatch) => {
 		try {
@@ -176,7 +178,6 @@ export const getComments = (id) => {
 			);
 			if (resp.ok) {
 				const data = await resp.json();
-				console.log(data);
 				dispatch({
 					type: GET_ALL_COMMENTS,
 					payload: data,
