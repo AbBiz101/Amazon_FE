@@ -12,7 +12,7 @@ export default function User() {
 	const [email, setEmail] = useState(user.email);
 	const [firstName, setFirstName] = useState(user.firstName);
 	const [lastName, setLastName] = useState(user.lastName);
-
+	const [image, setImage] = useState(user.avatar);
 	const updateHandler = async (e) => {
 		e.preventDefault();
 		console.log(email, firstName, lastName);
@@ -47,8 +47,17 @@ export default function User() {
 					alt=""
 					src={user.avatar}
 				/>
-				<button className="mx-2 user_image_provider" type="submit">
-					Update
+				<input
+					required
+					type="file"
+					accept="image/png, image/jpeg"
+					placeholder="Product name"
+					onChange={(e) => setImage(e.target.files[0])}
+					//onSubmit={imageHandler}
+				/>
+
+				<button className="obj_image_provider" type="submit">
+					Update image
 				</button>
 			</div>
 			<div className="login_page">

@@ -13,40 +13,31 @@ export default function BackOffice() {
 	const [productDescription, setDescription] = useState('');
 	const [image, setImage] = useState([]);
 	const [productImg, setImageURL] = useState('');
-	let img;
 
 	const imageHandler = async (e) => {
-		console.log(2222);
-		// try {
-		// 	let formDt = new FormData();
-		// 	formDt.append('product', image);
-		// 	let res = await fetch(
-		// 		'https://amazon-be-completed.herokuapp.com/product/Image',
-		// 		{
-		// 			method: 'POST',
-		// 			body: formDt,
-		// 		},
-		// 	);
-		// 	const obj = res;
-		// 	console.log(res);
-		// 	if (obj) {
-		// 		setImageURL(obj);
-		// 	}
-		// } catch (error) {
-		// 	console.log(error);
-		// }
+		try {
+			let formDt = new FormData();
+			formDt.append('product', image);
+			let res = await fetch(
+				'https://amazon-be-completed.herokuapp.com/product/Image',
+				{
+					method: 'POST',
+					body: formDt,
+				},
+			);
+			if (res.ok) {
+				const obj = await res.json();
+				console.log(obj);
+				setImageURL(obj.data);
+			}
+		} catch (error) {
+			console.log(error);
+		}
 	};
 
 	const registerHandler = async (e) => {
 		e.preventDefault();
 		try {
-			console.log(
-				productName,
-				productPrice,
-				productDescription,
-				productCategory,
-				productImg,
-			);
 			if (productImg) {
 				let response = await fetch(
 					'https://amazon-be-completed.herokuapp.com/product',
@@ -72,10 +63,7 @@ export default function BackOffice() {
 		<div>
 			<div className="offset-md-3 offset-sm-0 col-6 backOffice_form">
 				<h3>Product Details</h3>
-				<div
-					className="image_containin_box d-flex"
-					onClick={(e) => imageHandler()}
-				>
+				<div className="image_containin_box d-flex">
 					<Form.Label>Image</Form.Label>
 					<div className=" d-flex">
 						<Form.Group

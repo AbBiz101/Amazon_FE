@@ -2,7 +2,11 @@ import './Home.css';
 import { useEffect } from 'react';
 import { Carousel, Spinner } from 'react-bootstrap';
 import { useDispatch, useSelector } from 'react-redux';
-import { getAllProducts, searchProducts } from '../../Redux/Action/index';
+import {
+	getAllProducts,
+	searchProducts,
+	logIn,
+} from '../../Redux/Action/index';
 import ProductCompOne from '../ProductCompOne/ProductCompOne';
 import ProductCompTwo from '../ProductCompTwo/ProductCompTwo';
 import ProductCompThree from '../ProductCompThree/ProductCompThree';
@@ -21,13 +25,13 @@ export default function Home() {
 		const params = new URLSearchParams(window.location.search);
 		const accessToken = params.get('accessToken');
 		try {
-			let req = fetch('http://localhost:3011/user/getUser', {
-				headers: { authorization: accessToken },
+			let req = await fetch('http://localhost:3011/user/getUser', {
+				headers: { authorization: `Bearer ${accessToken}` },
 			});
 
 			if (req.ok) {
-				const data = req.json();
-				console.log(data);
+				const data = await req.json();
+				dispatch(logIn(data))
 			} else {
 			}
 		} catch (error) {
