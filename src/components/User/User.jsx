@@ -1,7 +1,6 @@
-import React from 'react';
-import { useSelector, useDispatch } from 'react-redux';
 import './user.css';
 import { useState } from 'react';
+import { useSelector, useDispatch } from 'react-redux';
 
 
 export default function User() {

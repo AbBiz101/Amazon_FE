@@ -23,7 +23,7 @@ export default function NavBar() {
 	const firstName = useSelector((state) => state.user.firstName);
 	const cartLength = useSelector((state) => state.user.cart.length);
 	const [searchVal, setSearchVal] = useState('');
-	// dispatch(searchProducts(searchVal));
+	
 	return (
 		<>
 			<div className="container-fluid px-0 xxxx">

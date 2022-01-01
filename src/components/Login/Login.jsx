@@ -15,10 +15,6 @@ export default function Login() {
 		console.log(212212);
 		e.preventDefault();
 		try {
-
-			//With email and password requesting data fro m  your back end,
-			// then you are setting the store with your user data
-			// and the localstorage with  the access and refreshTokens
 			let res = await fetch('http://localhost:3011/user/login', {
 				method: 'POST',
 				body: JSON.stringify({
