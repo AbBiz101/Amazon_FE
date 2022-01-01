@@ -3,7 +3,7 @@ import './BackOffice.css';
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useNavigate } from 'react-router';
-import { Form, Button } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import { removeAProduct } from '../../Redux/Action/index.js';
 
 export default function BackOffice() {

@@ -36,7 +36,6 @@ export default function User() {
 
 			if (res.ok) {
 				let data = await res.json();
-				// dispatch(logIn());
 				console.log(data);
 			}
 		} catch (error) {
@@ -58,7 +57,6 @@ export default function User() {
 					accept="image/png, image/jpeg"
 					placeholder="Product name"
 					onChange={(e) => setImage(e.target.files[0])}
-					//onSubmit={imageHandler}
 				/>
 
 				<button className="obj_image_provider" type="submit">
