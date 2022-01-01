@@ -9,12 +9,13 @@ import { removeAProduct } from '../../Redux/Action/index.js';
 export default function BackOffice() {
 	const dispatch = useDispatch();
 	const history = useNavigate();
+	
+	const [image, setImage] = useState([]);
 	const [productName, setName] = useState('');
 	const [productPrice, setPrice] = useState('');
+	const [productImg, setImageURL] = useState('');
 	const [productCategory, setCategory] = useState('');
 	const [productDescription, setDescription] = useState('');
-	const [image, setImage] = useState([]);
-	const [productImg, setImageURL] = useState('');
 
 	const imageHandler = async (e) => {
 		try {

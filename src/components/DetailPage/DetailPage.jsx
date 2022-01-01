@@ -1,38 +1,53 @@
 import './DetailPage.css';
-import { ListGroup, ListGroupItem, Form, Card } from 'react-bootstrap';
-import { useEffect } from 'react';
-import { useState } from 'react';
 import {
 	getAProduct,
 	getComments,
 	removeAProduct,
 } from '../../Redux/Action/index.js';
+import { useNavigate } from 'react-router';
+import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { isElementOfType } from 'react-dom/cjs/react-dom-test-utils.production.min';
-import { useNavigate } from 'react-router';
+import { ListGroup, ListGroupItem, Form, Card } from 'react-bootstrap';
 
 export default function DetailPage() {
 	const history = useNavigate();
 	const dispatch = useDispatch();
-
 	const [id, setId] = useSearchParams();
 	const val = id.get('id');
+	const [product, setProduct] = useState({});
+	const [productName, setName] = useState('');
+	const [image, setImage] = useState('');
+	const [productImg, setImageURL] = useState('');
+	const [productPrice, setPrice] = useState('');
+	const [productCategory, setCategory] = useState('');
+	const [productDescription, setDescription] = useState('');
+
+	const getP = async () => {
+		try {
+			let res = await fetch('http://localhost:3011/Product' ,{
+				method: 'GET',
+				headers: {
+					'Content-Type': 'application/json',
+				},
+			});
+
+			if (res.ok) {
+				let data = await res.json();
+				setImageURL(data.productImg);
+				setName(data.productName);
+				setPrice(data.productPrice);
+				setCategory(data.productCategory);
+				setDescription(data.productDescription);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
 
 	const role = useSelector((state) => state.user.role);
-	const product = useSelector((state) => state.singleProduct.product);
 	const comments = useSelector((state) => state.comments.comments);
-
-	const [image, setImage] = useState([]);
-	const [productName, setName] = useState(product.productName);
-	const [productImg, setImageURL] = useState(product.productImg);
-	const [productPrice, setPrice] = useState(product.productPrice);
-	const [productCategory, setCategory] = useState(product.productCategory);
-	const [productDescription, setDescription] = useState(
-		product.productDescription,
-	);
-
-
+	const productGet = useSelector((state) => state.singleProduct.product);
 
 	const imageHandler = async (e) => {
 		try {
@@ -90,13 +105,14 @@ export default function DetailPage() {
 	};
 
 	useEffect(() => {
+		getP();
 		dispatch(getComments(val));
 		dispatch(getAProduct(val));
-	}, [val]);
+	}, []);
 
 	return (
 		<div className="detail_page_single_P">
-			{!product ? (
+			{!productName ? (
 				<></>
 			) : (
 				<>
@@ -106,7 +122,7 @@ export default function DetailPage() {
 								<img
 									className="user_image_editing"
 									alt=""
-									src={product.productImg}
+									src={productImg}
 								/>
 
 								<input
@@ -130,14 +146,14 @@ export default function DetailPage() {
 										className="login_page_input"
 										type="text"
 										value={productName}
-										placeholder={product.productImg}
+										placeholder={productGet.productImg}
 										onChange={(e) => setName(e.target.value)}
 									/>
 									<h6 className="mt-3 ">Product Category</h6>
 									<Form.Group controlId="login_page_input exampleForm.ControlSelect1">
 										<Form.Control
 											value={productCategory}
-											placeholder={product.productCategory}
+											placeholder={productGet.productCategory}
 											onChange={(e) => setCategory(e.target.value)}
 											as="select"
 										>
@@ -153,7 +169,7 @@ export default function DetailPage() {
 									<input
 										className="login_page_input"
 										type="number"
-										placeholder={product.productPrice}
+										placeholder={productGet.productPrice}
 										value={productPrice}
 										onChange={(e) => setPrice(e.target.value)}
 									/>
@@ -163,7 +179,7 @@ export default function DetailPage() {
 										className=" login_page_input"
 										cols="50"
 										rows="4"
-										productPrice={product.productDescription}
+										productPrice={productGet.productDescription}
 										value={productDescription}
 										onChange={(e) => setDescription(e.target.value)}
 									/>

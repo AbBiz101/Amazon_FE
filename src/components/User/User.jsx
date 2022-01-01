@@ -1,17 +1,12 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { Button } from 'react-bootstrap';
 import './user.css';
 import { useState } from 'react';
-import { Form, Alert } from 'react-bootstrap';
-import { useNavigate } from 'react-router';
-import  {logIn} from '../../Redux/Action/index.js'
 
 
 export default function User() {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.user);
-	console.log();
 	const id = user._id;
 	const [email, setEmail] = useState(user.email);
 	const [image, setImage] = useState(user.avatar);

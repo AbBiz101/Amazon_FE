@@ -9,6 +9,7 @@ import {
 import { Link } from 'react-router-dom';
 import { Button } from 'react-bootstrap';
 import { BsSearch } from 'react-icons/bs';
+import { useState } from 'react';
 import { useNavigate } from 'react-router';
 import { RiShoppingCartLine } from 'react-icons/ri';
 import { useSelector, useDispatch } from 'react-redux';
@@ -21,6 +22,8 @@ export default function NavBar() {
 	const role = useSelector((state) => state.user.role);
 	const firstName = useSelector((state) => state.user.firstName);
 	const cartLength = useSelector((state) => state.user.cart.length);
+	const [searchVal, setSearchVal] = useState('');
+	// dispatch(searchProducts(searchVal));
 	return (
 		<>
 			<div className="container-fluid px-0 xxxx">
@@ -30,9 +33,7 @@ export default function NavBar() {
 							<img
 								className="d-none d-sm-block header_logo"
 								alt=""
-								onClick={() =>
-									dispatch(removeAProduct())
-								}
+								onClick={() => dispatch(removeAProduct())}
 								src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
 							/>
 						</Link>

@@ -140,16 +140,32 @@ export const removeAProduct = () => ({
 });
 export const searchProducts = (name) => {
 	return async (dispatch) => {
+		// e.preventDefault();
 		try {
-			const resp = await fetch(
-				`https://amazon-be-completed.herokuapp.com/product/search=${name}`,
-			);
+			const resp = await fetch('http://localhost:3011/product');
 			if (resp.ok) {
 				const data = await resp.json();
-				dispatch({
-					type: SEARCH_PRODUCTS,
-					payload: data.data,
-				});
+				const product = data.allProducts
+				product.filter(prod => {
+					if (name === '') {
+							return prod
+					} else if (prod.productName.toLowerCase().includes(name.toLowerCase())) {
+						console.log(prod);
+
+						dispatch({
+							type: SEARCH_PRODUCTS,
+							payload: prod,
+						});
+						return prod
+						}
+					});
+
+				console.log(name);
+
+				// dispatch({
+				// 	type: SEARCH_PRODUCTS,
+				// 	payload: data.data,
+				// });
 
 				dispatch({ type: SEARCH_LOADER, payload: false });
 			} else {

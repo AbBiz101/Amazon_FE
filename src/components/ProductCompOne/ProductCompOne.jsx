@@ -5,12 +5,13 @@ import { AiFillStar, AiOutlineStar } from 'react-icons/ai';
 import { useNavigate } from 'react-router';
 import { useState } from 'react';
 import { Form } from 'react-bootstrap';
+
 export default function ProductCompOne({ item }) {
+	const history = useNavigate();
+	const dispatch = useDispatch();
 	const [show, setShow] = useState(false);
 	const [comment, setComment] = useState('');
 	const firstName = useSelector((state) => state.user.email);
-	const history = useNavigate();
-	const dispatch = useDispatch();
 
 	const commentHandler = async (e) => {
 		e.preventDefault();
@@ -40,7 +41,6 @@ export default function ProductCompOne({ item }) {
 	};
 
 	const goToDetail = async (e) => {
-		dispatch(getAProduct(item._id));
 		history(`/detail/?id=${item._id}`);
 	};
 

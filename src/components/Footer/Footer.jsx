@@ -2,19 +2,19 @@ import React from 'react';
 import './Footer.css';
 export default function Footer() {
 	return (
-		<div className="footerBox">
+		<div className="d-none d-sm-block footerBox">
 			<div className="mx-5  footer_small_box d-flex">
-				<div className="footer_text">
+				<div className=" d-none d-lg-block footer_text">
 					<h5>Amazon Advertising</h5>
 					<p>Find, attract, and </p>
 					<p>engage customers</p>
 				</div>
-				<div className="footer_text">
+				<div className="d-none d-lg-block footer_text">
 					<h5>Amazon Music</h5>
 					<p>Stream millions </p>
 					<p>of songs</p>
 				</div>
-				<div className="footer_text">
+				<div className="d-none d-md-block footer_text">
 					<h5>AbeBooks</h5>
 					<p>Books, art</p>
 					<p>& collectables</p>
@@ -36,19 +36,19 @@ export default function Footer() {
 			</div>
 
 			<div className="mx-5 mt-5 footer_small_box mt-3 d-flex">
-				<div className="footer_text">
+				<div className="d-none d-lg-block footer_text">
 					<h5>Kindle Direct Publishing</h5>
 					<p>Indie Digital & Print Publishing</p>
 					<p>Made Easy</p>
 				</div>
 
-				<div className="footer_text">
+				<div className="d-none d-lg-block footer_text">
 					<h5>Kindle Direct Publishing</h5>
 					<p>Indie Digital & Print Publishing</p>
 					<p>Made Easy</p>
 				</div>
 
-				<div className="footer_text">
+				<div className="d-none d-md-block footer_text">
 					<h5>Shopbop</h5>
 					<p>Designer</p>
 					<p>Fashion Brands</p>
@@ -74,20 +74,20 @@ export default function Footer() {
 			</div>
 
 			<div className="mx-5 mt-5 footer_small mt-3 d-flex">
-				<div className="footer_text">
+				<div className="d-none d-lg-block footer_text">
 					<h5>Conditions of Use & Sale</h5>
 				</div>
 
-				<div className="footer_text">
+				<div className="d-none d-lg-block footer_text">
 					<h5>Privacy Notice</h5>
 				</div>
-				<div className="footer_text">
+				<div className="d-none d-md-block footer_text">
 					<h5>Imprint</h5>
 				</div>
-				<div className="footer_text">
+				<div className="d-none d-md-block footer_text">
 					<h5>Cookies Notice</h5>
 				</div>
-				
+
 				<div className="footer_text">
 					<h5>© 1996-2021, Amazon.com, Inc. or its affiliates</h5>
 				</div>
