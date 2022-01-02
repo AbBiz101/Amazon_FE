@@ -41,7 +41,11 @@ export default function ProductCompOne({ item }) {
 	};
 
 	const goToDetail = async (e) => {
-		history(`/detail/?id=${item._id}`);
+		dispatch(getAProduct(item._id));
+		
+		setTimeout(() => {
+			history(`/detail/?id=${item._id}`);
+		}, 1000);
 	};
 
 	return (

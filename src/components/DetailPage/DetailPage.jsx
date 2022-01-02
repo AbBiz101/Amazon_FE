@@ -15,39 +15,18 @@ export default function DetailPage() {
 	const dispatch = useDispatch();
 	const [id, setId] = useSearchParams();
 	const val = id.get('id');
-	const [product, setProduct] = useState({});
+	const [image, setImage] = useState([]);
+	const role = useSelector((state) => state.user.role);
+	const comments = useSelector((state) => state.comments.comments);
+	const productGet = useSelector((state) => state.singleProduct.product);
+
 	const [productName, setName] = useState('');
-	const [image, setImage] = useState('');
 	const [productImg, setImageURL] = useState('');
 	const [productPrice, setPrice] = useState('');
 	const [productCategory, setCategory] = useState('');
 	const [productDescription, setDescription] = useState('');
 
-	const getP = async () => {
-		try {
-			let res = await fetch('http://localhost:3011/Product' ,{
-				method: 'GET',
-				headers: {
-					'Content-Type': 'application/json',
-				},
-			});
-
-			if (res.ok) {
-				let data = await res.json();
-				setImageURL(data.productImg);
-				setName(data.productName);
-				setPrice(data.productPrice);
-				setCategory(data.productCategory);
-				setDescription(data.productDescription);
-			}
-		} catch (error) {
-			console.log(error);
-		}
-	};
-
-	const role = useSelector((state) => state.user.role);
-	const comments = useSelector((state) => state.comments.comments);
-	const productGet = useSelector((state) => state.singleProduct.product);
+	console.log();
 
 	const imageHandler = async (e) => {
 		try {
@@ -81,6 +60,7 @@ export default function DetailPage() {
 				}),
 				headers: { 'Content-Type': 'application/json' },
 			});
+			history(`/`);
 		} catch (error) {
 			console.log(error);
 		}
@@ -105,35 +85,43 @@ export default function DetailPage() {
 	};
 
 	useEffect(() => {
-		getP();
 		dispatch(getComments(val));
 		dispatch(getAProduct(val));
 	}, []);
 
+	useEffect(() => {
+		if (productGet) {
+			setImageURL(productGet.productImg);
+			setName(productGet.productName);
+			setPrice(productGet.productPrice);
+			setCategory(productGet.productCategory);
+			setDescription(productGet.productDescription);
+		}
+	}, [productGet]);
+
 	return (
 		<div className="detail_page_single_P">
-			{!productName ? (
-				<></>
+			{!productGet ? (
+				<>Loading</>
 			) : (
 				<>
 					{role === 'ADMIN' ? (
 						<div className="d-flex mt-5 object_cont">
-							<div onClick={(e) => imageHandler()}>
-								<img
-									className="user_image_editing"
-									alt=""
-									src={productImg}
-								/>
-
+							<div>
+								<img className="user_image_editing" alt="" src={productImg} />
 								<input
 									required
 									type="file"
-									value={productImg}
 									accept="image/png, image/jpeg"
 									placeholder="Product name"
 									onChange={(e) => setImage(e.target.files[0])}
 								/>
-								<button className="obj_image_provider">Update image</button>
+								<button
+									onClick={(e) => imageHandler()}
+									className="obj_image_provider"
+								>
+									Update image
+								</button>
 							</div>
 
 							<div className="mt-3">
@@ -146,14 +134,14 @@ export default function DetailPage() {
 										className="login_page_input"
 										type="text"
 										value={productName}
-										placeholder={productGet.productImg}
+										placeholder={productName}
 										onChange={(e) => setName(e.target.value)}
 									/>
 									<h6 className="mt-3 ">Product Category</h6>
 									<Form.Group controlId="login_page_input exampleForm.ControlSelect1">
 										<Form.Control
 											value={productCategory}
-											placeholder={productGet.productCategory}
+											placeholder={productCategory}
 											onChange={(e) => setCategory(e.target.value)}
 											as="select"
 										>
@@ -169,7 +157,7 @@ export default function DetailPage() {
 									<input
 										className="login_page_input"
 										type="number"
-										placeholder={productGet.productPrice}
+										placeholder={productPrice}
 										value={productPrice}
 										onChange={(e) => setPrice(e.target.value)}
 									/>
@@ -179,7 +167,7 @@ export default function DetailPage() {
 										className=" login_page_input"
 										cols="50"
 										rows="4"
-										productPrice={productGet.productDescription}
+										productPrice={productDescription}
 										value={productDescription}
 										onChange={(e) => setDescription(e.target.value)}
 									/>
@@ -199,18 +187,14 @@ export default function DetailPage() {
 					) : (
 						<>
 							<Card className="detail_page_single">
-								<Card.Img
-									className="p_img"
-									variant="top"
-									src={product.productImg}
-								/>
+								<Card.Img className="p_img" variant="top" src={productImg} />
 								<Card.Body>
-									<Card.Title>{product.productName}</Card.Title>
+									<Card.Title>{productName}</Card.Title>
 								</Card.Body>
 								<ListGroup className="list-group-flush">
-									<ListGroupItem>Price-{product.productPrice}€</ListGroupItem>
-									<ListGroupItem>{product.productCategory}</ListGroupItem>
-									<ListGroupItem>{product.productDescription}</ListGroupItem>
+									<ListGroupItem>Price-{productPrice}€</ListGroupItem>
+									<ListGroupItem>{productCategory}</ListGroupItem>
+									<ListGroupItem>{productDescription}</ListGroupItem>
 								</ListGroup>
 							</Card>
 							<ListGroup className="comment_list">

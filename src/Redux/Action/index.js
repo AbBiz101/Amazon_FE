@@ -145,20 +145,22 @@ export const searchProducts = (name) => {
 			const resp = await fetch('http://localhost:3011/product');
 			if (resp.ok) {
 				const data = await resp.json();
-				const product = data.allProducts
-				product.filter(prod => {
+				const product = data.allProducts;
+				product.filter((prod) => {
 					if (name === '') {
-							return prod
-					} else if (prod.productName.toLowerCase().includes(name.toLowerCase())) {
+						return prod;
+					} else if (
+						prod.productName.toLowerCase().includes(name.toLowerCase())
+					) {
 						console.log(prod);
 
 						dispatch({
 							type: SEARCH_PRODUCTS,
 							payload: prod,
 						});
-						return prod
-						}
-					});
+						return prod;
+					}
+				});
 
 				console.log(name);
 
