@@ -2,7 +2,6 @@
 	background-color: #eaeded;
 }
 
-
 .basket_left,
 .basket_right {
 	background-color: rgb(255, 255, 255);
@@ -27,4 +26,40 @@
 	list-style-type: none;
 	/* margin: 0px 15px;
 	padding: 0px; */
+}
+
+@media (min-width: 768px) {
+	.basket_right {
+		height: 290px;
+	}
+}
+@media (min-width: 788px) {
+	.basket_right {
+		height: 270px;
+	}
+}
+@media (min-width: 824px) {
+	.basket_right {
+		height: 245px;
+	}
+}
+/* @media (min-width: 845px) {
+	.basket_right {
+		height: 244px;
+	}
+} */
+@media (min-width: 986px) {
+	.basket_right {
+		height: 225px;
+	}
+}
+@media (min-width: 1010px) {
+	.basket_right {
+		height: 200px;
+	}
+}
+@media (min-width: 1658px) {
+	.basket_right {
+		height: 175px;
+	}
 }

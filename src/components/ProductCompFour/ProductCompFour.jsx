@@ -15,16 +15,13 @@ export default function ProductCompFour({ i, item }) {
 				<p className="my-0" style={{ color: 'green' }}>
 					In stock
 				</p>
-				<button className="product_four_btn">
-					<h6
-						onClick={() => {
-							console.log(i);
-							dispatch(removeFromCart(i));
-						}}
-						className="mt-1"
-					>
-						Remove From Basket
-					</h6>
+				<button
+					onClick={() => {
+						dispatch(removeFromCart(i));
+					}}
+					className="product_four_btn"
+				>
+					<h6 className="mt-1">Remove From Basket</h6>
 				</button>
 			</div>
 

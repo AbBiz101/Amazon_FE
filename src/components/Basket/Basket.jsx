@@ -29,9 +29,9 @@ export default function Basket() {
 	};
 
 	return (
-		<div className="basket mt-3 container-fluid px-0 mx-0">
-			<div className="row px-0 mx-0">
-				<div className="col-12 col-md-8 col-lg-8 col-xl-8 basket_left">
+		<div className="basket  container-fluid px-0 mx-0">
+			<div className="row px-4 mx-0">
+				<div className="col-12 mt-3 col-md-8 col-lg-8 col-xl-8 basket_left">
 					<h4 className="mx-3 my-1 basket_title">Your Items</h4>
 					<ul className="basket_left_ul mx-0 px-0">
 						{cartLength ? (
@@ -46,7 +46,7 @@ export default function Basket() {
 					</ul>
 				</div>
 
-				<div className="col-12 col-md-4 col-lg-4 col-xl-4 basket_right">
+				<div className="col-12 mt-3 col-md-4 col-lg-4 col-xl-4 basket_right">
 					<div className="my-2 mx-3 basket_right_description">
 						<AiFillCheckCircle size={20} />
 						<p className=" mx-1 d-inline">
@@ -78,4 +78,3 @@ export default function Basket() {
 		</div>
 	);
 }
-
