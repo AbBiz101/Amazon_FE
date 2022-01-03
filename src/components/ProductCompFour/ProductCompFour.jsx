@@ -11,7 +11,7 @@ export default function ProductCompFour({ i, item }) {
 
 			<div className="product_four_description mx-0 px-0">
 				<h4>{item.productName}</h4>
-				<h6>{item.productDescription}</h6>
+				{/* <h6>{item.productDescription}</h6> */}
 				<p className="my-0" style={{ color: 'green' }}>
 					In stock
 				</p>

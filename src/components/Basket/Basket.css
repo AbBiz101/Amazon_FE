@@ -1,16 +1,8 @@
 .basket {
 	background-color: #eaeded;
-	flex-direction: row;
 }
-.basket_left {
-	flex: 1;
-	/* margin: 25px 15px 25px 25px; */
-}
-.basket_right {
-	flex: 0.4;
-	margin: 25px 25px 25px 15px;
-	max-height: 210px;
-}
+
+
 .basket_left,
 .basket_right {
 	background-color: rgb(255, 255, 255);
