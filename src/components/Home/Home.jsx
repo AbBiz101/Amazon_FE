@@ -12,6 +12,7 @@ import ProductCompTwo from '../ProductCompTwo/ProductCompTwo';
 import ProductCompThree from '../ProductCompThree/ProductCompThree';
 import { useNavigate } from 'react-router';
 import Footer from '../Footer/Footer';
+import { useSearchParams } from 'react-router-dom';
 
 export default function Home() {
 	const history = useNavigate();
@@ -20,10 +21,11 @@ export default function Home() {
 	const product = useSelector((state) => state.product.stock.allProducts);
 	const productLoading = useSelector((state) => state.product.isLoading);
 	const searchLoading = useSelector((state) => state.search.isLoading);
-
+	const [id, setId] = useSearchParams();
+	const accessToken = id.get('accessToken');
+	localStorage.setItem('accessToken', accessToken);
+	console.log(accessToken);
 	const cheOauthLogin = async () => {
-		const params = new URLSearchParams(window.location.search);
-		const accessToken = params.get('accessToken');
 		try {
 			let req = await fetch('http://localhost:3011/user/getUser', {
 				headers: { authorization: `Bearer ${accessToken}` },
@@ -31,24 +33,19 @@ export default function Home() {
 
 			if (req.ok) {
 				const data = await req.json();
-				dispatch(logIn(data))
+				dispatch(logIn(data));
 			} else {
 			}
 		} catch (error) {
 			console.log(error);
 		}
-		// retrieve the tokens from the URLSearchParams
-		// request user DAta from the backend and
-		// set localstorage tokens
-		// set store with user data
+	
 
 		if (accessToken) {
 		}
 	};
 
-	//With email and password requesting data fro m  your back end,
-	// then you are setting the store with your user data
-	// and the localstorage with  the access and refreshTokens
+	
 
 	useEffect(() => {
 		//Check if access params exist and

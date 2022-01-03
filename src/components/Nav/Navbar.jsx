@@ -21,9 +21,15 @@ export default function NavBar() {
 	const user = useSelector((state) => state.user);
 	const role = useSelector((state) => state.user.role);
 	const firstName = useSelector((state) => state.user.firstName);
+	const lastName = useSelector((state) => state.user.lastName);
 	const cartLength = useSelector((state) => state.user.cart.length);
 	const [searchVal, setSearchVal] = useState('');
-	
+
+	const LOGOUT = async (e) => {
+		history('/');
+		dispatch(logout());
+	};
+
 	return (
 		<>
 			<div className="container-fluid px-0 xxxx">
@@ -42,7 +48,9 @@ export default function NavBar() {
 						) : (
 							<div className="d-none d-xl-block header_user_location">
 								<div>
-									<span>Deliver to {firstName}</span>
+									<span>
+										Deliver to {firstName} {lastName}
+									</span>
 									<h6>Stuttgart 70327‌</h6>
 								</div>
 							</div>
@@ -103,8 +111,7 @@ export default function NavBar() {
 									<Dropdown.Item onClick={() => history('/me')}>
 										My profile
 									</Dropdown.Item>
-									{/* <Dropdown.Item>Another action</Dropdown.Item> */}
-									<Dropdown.Item onClick={() => dispatch(logout())}>
+									<Dropdown.Item onClick={(e) => LOGOUT()}>
 										Logout
 									</Dropdown.Item>
 								</SplitButton>

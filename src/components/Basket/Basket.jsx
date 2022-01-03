@@ -6,14 +6,37 @@ import ProductCompFour from '../ProductCompFour/ProductCompFour';
 export default function Basket() {
 	const cartLength = useSelector((state) => state.user.cart.length);
 	const cart = useSelector((state) => state.user.cart);
+	const accessToken = localStorage.getItem('accessToken');
+
+	const sendCartItems = async (e) => {
+		try {
+			let res = await fetch('http://localhost:3011/user/me/cart', {
+				method: 'POST',
+				body: JSON.stringify({ cart }),
+				headers: {
+					'Content-Type': 'application/json',
+					authorization: `Bearer ${accessToken}`,
+				},
+			});
+
+			if (res.ok) {
+				let data = await res.json();
+				console.log(data);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
+	console.log(cart);
 	return (
-		<div className="basket">
-			<div className="basket_left">
+		<div className="basket d-flex mt-3 container-fluid px-0 mx-0 ">
+			<div className="col-8  mx-0 px-0 basket_left">
 				<h4 className="mx-3 my-1 basket_title">Your Items</h4>
-				<ul className="basket_left_ul">
+				<ul className="basket_left_ul mx-0 px-0">
 					{cartLength ? (
 						cart.map((item, i) => (
-							<li>
+							<li className="mx-0 px-0">
 								<ProductCompFour item={item} i={i} />
 							</li>
 						))
@@ -22,7 +45,7 @@ export default function Basket() {
 					)}
 				</ul>
 			</div>
-			<div className="basket_right">
+			<div className="col-4 mx-0 px-0 basket_right">
 				<div className="my-2 mx-3 basket_right_description">
 					<AiFillCheckCircle size={20} />
 					<p className=" mx-1 d-inline">
@@ -45,7 +68,9 @@ export default function Basket() {
 					<h6 className="d-inline">This order contains a gift</h6>
 				</div>
 				<button className="d-block basket_checkout_btn">
-					<h6 className="mt-1">Proceed To Checkout</h6>
+					<h6 className="mt-1" onClick={(e) => sendCartItems()}>
+						Proceed To Checkout
+					</h6>
 				</button>
 			</div>
 		</div>

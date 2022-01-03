@@ -6,10 +6,10 @@ export default function ProductCompFour({ i, item }) {
 	const dispatch = useDispatch();
 
 	return (
-		<div className="product-comp-four">
+		<div className="product-comp-four  mx-0 px-0 ">
 			<img alt="" src={item.productImg} />
 
-			<div className="product_four_description">
+			<div className="product_four_description mx-0 px-0">
 				<h4>{item.productName}</h4>
 				<h6>{item.productDescription}</h6>
 				<p className="my-0" style={{ color: 'green' }}>
@@ -28,7 +28,7 @@ export default function ProductCompFour({ i, item }) {
 				</button>
 			</div>
 
-			<div className="product_price">
+			<div className="product_price mx-0 px-0 ">
 				<h5>Price-€{item.productPrice}</h5>
 			</div>
 		</div>

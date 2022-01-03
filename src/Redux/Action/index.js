@@ -121,6 +121,7 @@ export const getAProduct = (id) => {
 					type: GET_A_PRODUCT,
 					payload: data,
 				});
+				console.log(data);
 				dispatch({ type: A_PRODUCT_LOADER, payload: false });
 			} else {
 				console.log('Error fetching.');
@@ -138,6 +139,7 @@ export const getAProduct = (id) => {
 export const removeAProduct = () => ({
 	type: REMOVE_A_PRODUCT,
 });
+
 export const searchProducts = (name) => {
 	return async (dispatch) => {
 		// e.preventDefault();

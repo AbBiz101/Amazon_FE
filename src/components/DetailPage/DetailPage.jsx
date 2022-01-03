@@ -8,7 +8,7 @@ import { useNavigate } from 'react-router';
 import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { ListGroup, ListGroupItem, Form, Card } from 'react-bootstrap';
+import { ListGroup, ListGroupItem, Form, Card, Spinner } from 'react-bootstrap';
 
 export default function DetailPage() {
 	const history = useNavigate();
@@ -25,8 +25,6 @@ export default function DetailPage() {
 	const [productPrice, setPrice] = useState('');
 	const [productCategory, setCategory] = useState('');
 	const [productDescription, setDescription] = useState('');
-
-	console.log();
 
 	const imageHandler = async (e) => {
 		try {
@@ -102,7 +100,7 @@ export default function DetailPage() {
 	return (
 		<div className="detail_page_single_P">
 			{!productGet ? (
-				<>Loading</>
+				<Spinner animation="border" />
 			) : (
 				<>
 					{role === 'ADMIN' ? (
@@ -164,7 +162,7 @@ export default function DetailPage() {
 									<h6 className="mt-3 ">Product Description</h6>
 
 									<textarea
-										className=" login_page_input"
+										className="descriptiontextArea "
 										cols="50"
 										rows="4"
 										productPrice={productDescription}
@@ -199,9 +197,13 @@ export default function DetailPage() {
 							</Card>
 							<ListGroup className="comment_list">
 								<h5>Comments</h5>
-								{comments.map((x) => (
-									<ListGroup.Item>{x}</ListGroup.Item>
-								))}
+								{!comments ? (
+									<></>
+								) : (
+									comments[0].map((x) => (
+										<ListGroup.Item>{x.comment}</ListGroup.Item>
+									))
+								)}
 							</ListGroup>
 						</>
 					)}

@@ -1,8 +1,7 @@
 import './user.css';
 import { useState } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-
-
+import { logIn } from '../../Redux/Action/index.js';
 export default function User() {
 	const dispatch = useDispatch();
 	const user = useSelector((state) => state.user);
@@ -12,12 +11,28 @@ export default function User() {
 	const [lastName, setLastName] = useState(user.lastName);
 	const [firstName, setFirstName] = useState(user.firstName);
 	const accessToken = localStorage.getItem('accessToken');
+	const [img, setIMG] = useState([]);
 
-	const imageHandler = async (e) => { console.log(22)}
-	
+	const imageHandler = async (e) => {
+		try {
+			let formDt = new FormData();
+			formDt.append('product', img);
+			let res = await fetch('http://localhost:3011/product/Image', {
+				method: 'POST',
+				body: formDt,
+			});
+			if (res.ok) {
+				const obj = await res.json();
+				console.log(obj);
+				setImage(obj.data);
+			}
+		} catch (error) {
+			console.log(error);
+		}
+	};
+
 	const updateHandler = async (e) => {
 		e.preventDefault();
-		console.log(email, firstName, lastName, accessToken);
 		try {
 			let res = await fetch('http://localhost:3011/user/me', {
 				method: 'PUT',
@@ -26,6 +41,7 @@ export default function User() {
 					firstName,
 					lastName,
 					id,
+					image,
 				}),
 				headers: {
 					'Content-Type': 'application/json',
@@ -35,7 +51,7 @@ export default function User() {
 
 			if (res.ok) {
 				let data = await res.json();
-				console.log(data);
+				dispatch(logIn(data));
 			}
 		} catch (error) {
 			console.log(error);
@@ -44,7 +60,7 @@ export default function User() {
 
 	return (
 		<div className="login_container">
-			<div onSubmit={imageHandler}>
+			<div>
 				<img
 					className="user_image_provider_2 login_logo"
 					alt=""
@@ -55,10 +71,14 @@ export default function User() {
 					type="file"
 					accept="image/png, image/jpeg"
 					placeholder="Product name"
-					onChange={(e) => setImage(e.target.files[0])}
+					onChange={(e) => setIMG(e.target.files[0])}
 				/>
 
-				<button className="obj_image_provider" type="submit">
+				<button
+					onClick={(e) => imageHandler()}
+					className="obj_image_provider"
+					type="submit"
+				>
 					Update image
 				</button>
 			</div>

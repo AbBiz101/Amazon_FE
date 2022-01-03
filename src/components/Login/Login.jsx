@@ -12,7 +12,6 @@ export default function Login() {
 	const [password, setPassword] = useState('');
 
 	const loginHandler = async (e) => {
-		console.log(212212);
 		e.preventDefault();
 		try {
 			let res = await fetch('http://localhost:3011/user/login', {

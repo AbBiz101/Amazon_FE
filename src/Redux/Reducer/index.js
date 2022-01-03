@@ -86,11 +86,13 @@ export const singleProductReducer = (
 export const commentsReducer = (state = initialState.comments, action) => {
 	switch (action.type) {
 		case GET_ALL_COMMENTS:
-			return { ...state, comments: action.payload };
+			return { ...state, comments: [action.payload] };
 		case GET_ALL_COMMENTS_LOADER:
 			return { ...state, isLoading: action.payload };
 		case GET_ALL_COMMENTS_ERROR:
 			return { ...state, isLoading: action.payload };
+		case REMOVE_A_PRODUCT:
+			return { comments:undefined };
 		default:
 			return state;
 	}

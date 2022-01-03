@@ -1,7 +1,7 @@
 .product-comp-four {
 	display: flex;
 	flex-direction: row;
-	width: 100%;
+	width: 90%;
 	border-bottom: 1px solid rgb(148, 148, 148);
 	max-height: 220px;
 	min-height: 220px;
@@ -9,9 +9,8 @@
 }
 
 .product-comp-four > img {
-	display: flex;
 	max-height: 200px;
-	min-height: 200px;
+	width: auto;
 	margin: 0px 20px 15px;
 	flex: 1;
 }

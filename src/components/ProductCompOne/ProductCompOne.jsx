@@ -14,7 +14,6 @@ export default function ProductCompOne({ item }) {
 	const firstName = useSelector((state) => state.user.email);
 
 	const commentHandler = async (e) => {
-		e.preventDefault();
 		try {
 			let res = await fetch(
 				`https://amazon-be-completed.herokuapp.com/product/${item._id}/comments`,
@@ -42,10 +41,7 @@ export default function ProductCompOne({ item }) {
 
 	const goToDetail = async (e) => {
 		dispatch(getAProduct(item._id));
-		
-		setTimeout(() => {
-			history(`/detail/?id=${item._id}`);
-		}, 1000);
+		history(`/detail/?id=${item._id}`);
 	};
 
 	return (
@@ -89,14 +85,16 @@ export default function ProductCompOne({ item }) {
 						comment
 					</p>
 					{show ? (
-						<div on submit={commentHandler} className="comment_section">
+						<div className="comment_section">
 							<Form.Control
 								value={comment}
 								onChange={(e) => setComment(e.target.value)}
 								type="email"
 								placeholder="Enter your comment"
 							/>
-							<button type="submit">send</button>
+							<button onClick={(e) => commentHandler()} type="submit">
+								send
+							</button>
 						</div>
 					) : null}
 				</>

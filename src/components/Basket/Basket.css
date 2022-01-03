@@ -1,12 +1,10 @@
 .basket {
-	width: 100%;
 	background-color: #eaeded;
-	display: flex;
 	flex-direction: row;
 }
 .basket_left {
 	flex: 1;
-	margin: 25px 15px 25px 25px;
+	/* margin: 25px 15px 25px 25px; */
 }
 .basket_right {
 	flex: 0.4;
@@ -35,6 +33,6 @@
 
 .basket_left_ul {
 	list-style-type: none;
-	margin: 0px 15px;
-	padding: 0px;
+	/* margin: 0px 15px;
+	padding: 0px; */
 }
