@@ -31,13 +31,12 @@ export default function NavBar() {
 	};
 
 	return (
-		<>
 			<div className="container-fluid px-0 xxxx">
 				<div className="col-12 header">
 					<div className="header_left">
 						<Link to="/">
 							<img
-								className="d-none d-sm-block header_logo"
+								className="header_logo"
 								alt=""
 								onClick={() => dispatch(removeAProduct())}
 								src="https://pngimg.com/uploads/amazon/amazon_PNG11.png"
@@ -48,9 +47,7 @@ export default function NavBar() {
 						) : (
 							<div className="d-none d-xl-block header_user_location">
 								<div>
-									<span>
-										Deliver to {firstName} {lastName}
-									</span>
+									<span>Deliver to {firstName}</span>
 									<h6>Stuttgart 70327‌</h6>
 								</div>
 							</div>
@@ -126,6 +123,5 @@ export default function NavBar() {
 					)}
 				</div>
 			</div>
-		</>
 	);
 }

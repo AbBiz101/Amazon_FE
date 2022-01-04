@@ -102,6 +102,17 @@
 		width: 250px;
 	}
 }
+
+@media (min-width: 200px) {
+	.header_logo {
+		display: none;
+	}
+}
+@media (min-width: 690px) {
+	.header_logo {
+		display: block;
+	}
+}
 @media (min-width: 571px) {
 	.header_search > input {
 		width: 280px;
