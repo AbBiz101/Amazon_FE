@@ -33,10 +33,10 @@ export default function Basket() {
 			<div className="row px-4 mx-0">
 				<div className="col-12 mt-3 col-md-8 col-lg-8 col-xl-8 basket_left">
 					<h4 className="mx-3 my-1 basket_title">Your Items</h4>
-					<ul className="basket_left_ul mx-0 px-0">
+					<ul className="basket_left_ul mx-0 my-0 px-0">
 						{cartLength ? (
 							cart.map((item, i) => (
-								<li className="mx-0 px-0">
+								<li className="mx-0 mb-2 px-0">
 									<ProductCompFour item={item} i={i} />
 								</li>
 							))

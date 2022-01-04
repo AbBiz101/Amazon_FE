@@ -24,8 +24,7 @@
 
 .basket_left_ul {
 	list-style-type: none;
-	/* margin: 0px 15px;
-	padding: 0px; */
+
 }
 
 @media (min-width: 768px) {
@@ -33,32 +32,28 @@
 		height: 290px;
 	}
 }
-@media (min-width: 788px) {
+
+@media (min-width: 803px) {
 	.basket_right {
-		height: 270px;
+		height: 290px;
 	}
 }
-@media (min-width: 824px) {
+@media (min-width: 840px) {
 	.basket_right {
-		height: 245px;
+		height: 255px;
 	}
 }
-/* @media (min-width: 845px) {
-	.basket_right {
-		height: 244px;
-	}
-} */
-@media (min-width: 986px) {
+@media (min-width: 1002px) {
 	.basket_right {
 		height: 225px;
 	}
 }
-@media (min-width: 1010px) {
+@media (min-width: 1028px) {
 	.basket_right {
 		height: 200px;
 	}
 }
-@media (min-width: 1658px) {
+@media (min-width: 1674px) {
 	.basket_right {
 		height: 175px;
 	}

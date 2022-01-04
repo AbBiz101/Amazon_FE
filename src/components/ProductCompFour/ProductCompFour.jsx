@@ -6,28 +6,28 @@ export default function ProductCompFour({ i, item }) {
 	const dispatch = useDispatch();
 
 	return (
-		<div className="product-comp-four  mx-0 px-0 ">
+		<div className="product-comp-four  my-0 p-0 ">
 			<img alt="" src={item.productImg} />
 
-			<div className="product_four_description mx-0 px-0">
-				<h4>{item.productName}</h4>
-				{/* <h6>{item.productDescription}</h6> */}
-				<p className="my-0" style={{ color: 'green' }}>
-					In stock
-				</p>
+			<div className="product_four_description my-0 mx-0 py-0 px-0">
+				<h5>{item.productName}</h5>
+				<h6 className="pdItem d-none d-sm-block">{item.productDescription}</h6>
+				<div className="d-flex mt-1 buttonAndPrice">
+					<p className="my-0" style={{ color: 'green' }}>
+						In stock
+					</p>
+					<h6 className="my-0 px-0">Price-€{item.productPrice}</h6>
+				</div>
 				<button
 					onClick={() => {
 						dispatch(removeFromCart(i));
 					}}
-					className="product_four_btn"
+					className="mt-2 mb-2 product_four_btn p-1"
 				>
-					<h6 className="mt-1">Remove From Basket</h6>
+					<h6 className="my-0">Remove From Basket</h6>
 				</button>
 			</div>
-
-			<div className="product_price mx-0 px-0 ">
-				<h5>Price-€{item.productPrice}</h5>
-			</div>
+			
 		</div>
 	);
 }
