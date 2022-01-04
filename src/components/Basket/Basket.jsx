@@ -46,7 +46,7 @@ export default function Basket() {
 					</ul>
 				</div>
 
-				<div className="col-12 mt-3 col-md-4 col-lg-4 col-xl-4 basket_right">
+				<div className="col-12 mt-3 col-md-4 col-lg-4 col-xl-4 ml-3 basket_right">
 					<div className="my-2 mx-3 basket_right_description">
 						<AiFillCheckCircle size={20} />
 						<p className=" mx-1 d-inline">

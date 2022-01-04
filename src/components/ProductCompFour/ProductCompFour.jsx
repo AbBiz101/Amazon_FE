@@ -7,11 +7,13 @@ export default function ProductCompFour({ i, item }) {
 
 	return (
 		<div className="product-comp-four  my-0 p-0 ">
-			<img alt="" src={item.productImg} />
+			<div className="firstBox d-flex ">
+				<img alt="" src={item.productImg} />
+				<hp className="pdItem mx-2 ">{item.productDescription}</hp>
+			</div>
 
 			<div className="product_four_description my-0 mx-0 py-0 px-0">
 				<h5>{item.productName}</h5>
-				<h6 className="pdItem d-none d-sm-block">{item.productDescription}</h6>
 				<div className="d-flex mt-1 buttonAndPrice">
 					<p className="my-0" style={{ color: 'green' }}>
 						In stock
@@ -27,7 +29,6 @@ export default function ProductCompFour({ i, item }) {
 					<h6 className="my-0">Remove From Basket</h6>
 				</button>
 			</div>
-			
 		</div>
 	);
 }
