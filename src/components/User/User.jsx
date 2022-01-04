@@ -59,59 +59,64 @@ export default function User() {
 	};
 
 	return (
-		<div className="login_container">
-			<div>
-				<img
-					className="user_image_provider_2 login_logo"
-					alt=""
-					src={user.avatar}
-				/>
-				<input
-					required
-					type="file"
-					accept="image/png, image/jpeg"
-					placeholder="Product name"
-					onChange={(e) => setIMG(e.target.files[0])}
-				/>
+		<div className="container-fluid px-0 mx-0 ">
+			<div className="user_container">
+				<div className="user_picture d-flex">
+					<img
+						className="user_image_provider_2  user_logo"
+						alt=""
+						src={user.avatar}
+					/>
+					<div className="input_button px-3 mt-2 py-1 d-flex">
+						<input
+							required
+							type="file"
+							accept="image/png, image/jpeg"
+							placeholder="Product name"
+							onChange={(e) => setIMG(e.target.files[0])}
+						/>
 
-				<button
-					onClick={(e) => imageHandler()}
-					className="obj_image_provider"
-					type="submit"
-				>
-					Update image
-				</button>
-			</div>
-			<div className="login_page">
-				<form onSubmit={updateHandler} className="login_page_form">
-					<h6>First Name</h6>
-					<input
-						className="login_page_input"
-						type="text"
-						placeholder={user.firstName}
-						value={firstName}
-						onChange={(e) => setFirstName(e.target.value)}
-					/>
-					<h6 className="mt-3">Last Name</h6>
-					<input
-						className="login_page_input"
-						type="text"
-						placeholder={user.lastName}
-						value={lastName}
-						onChange={(e) => setLastName(e.target.value)}
-					/>
-					<h6 className="mt-3">Email</h6>
-					<input
-						className="login_page_input"
-						type="email"
-						placeholder={user.email}
-						value={email}
-						onChange={(e) => setEmail(e.target.value)}
-					/>
-					<button className="login_page_btn1" type="submit">
-						Update user Info
-					</button>
-				</form>
+						<button
+							onClick={(e) => imageHandler()}
+							className="obj_image_provider"
+							type="submit"
+						>
+							Update image
+						</button>
+					</div>
+				</div>
+
+				<div className="mt-0 user_page">
+					<form onSubmit={updateHandler} className=" mt-0 user_page_form">
+						<h6 className="mt-0">First Name</h6>
+						<input
+							className=" user_page_input"
+							type="text"
+							placeholder={user.firstName}
+							value={firstName}
+							onChange={(e) => setFirstName(e.target.value)}
+						/>
+						<h6 className="mt-3">Last Name</h6>
+						<input
+							className=" user_page_input"
+							type="text"
+							placeholder={user.lastName}
+							value={lastName}
+							onChange={(e) => setLastName(e.target.value)}
+						/>
+						<h6 className="mt-3">Email</h6>
+						<input
+							className=" user_page_input"
+							type="email"
+							placeholder={user.email}
+							value={email}
+							onChange={(e) => setEmail(e.target.value)}
+						/>
+						<button className=" user_page_btn1" type="submit">
+							Update user Info
+						</button>
+					</form>
+				</div>
 			</div>
 		</div>
 	);
