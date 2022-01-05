@@ -74,8 +74,7 @@ export default function BackOffice() {
 	};
 
 	return (
-		<div>
-			<div className="offset-md-3 offset-sm-0 col-6 backOffice_form">
+			<div className="p-2 backOffice_form">
 				<h3>Product Details</h3>
 
 				<div
@@ -150,6 +149,5 @@ export default function BackOffice() {
 					</button>
 				</Form>
 			</div>
-		</div>
 	);
 }

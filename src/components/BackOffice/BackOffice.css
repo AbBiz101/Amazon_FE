@@ -1,15 +1,50 @@
-/* .backOffice_form {
-	margin-left: 50px !important;
-	margin-right: 50px;
-} */
+.backOffice_form {
+	border: 1px solid lightgray;
+	background-color: white;
+	border-radius: 5px;
+	width: 100%;
+	margin-left: auto;
+	margin-right: auto;
+}
 
 .image_containin_box {
 	flex-direction: column;
 }
 
-.obj_image_provider{
+.obj_image_provider {
 	border: 1px solid rgb(148, 148, 148);
 	background-color: #ffd814;
 	border-radius: 5px;
 	color: black;
+}
+
+@media (min-width: 450px) {
+	.backOffice_form {
+		width: 70%;
+	}
+}
+@media (min-width: 800px) {
+	.backOffice_form {
+		width: 60%;
+	}
+}
+@media (min-width: 1000px) {
+	.backOffice_form {
+		width: 55%;
+	}
+}
+@media (min-width: 1500px) {
+	.backOffice_form {
+		width: 50%;
+	}
+}
+@media (min-width: 2000px) {
+	.backOffice_form {
+		width: 45%;
+	}
+}
+@media (min-width: 2500px) {
+	.backOffice_form {
+		width: 40%;
+	}
 }
