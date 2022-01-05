@@ -74,7 +74,7 @@ export default function BackOffice() {
 	};
 
 	return (
-			<div className="p-2 backOffice_form">
+			<div className="p-2 mt-4 backOffice_form">
 				<h3>Product Details</h3>
 
 				<div

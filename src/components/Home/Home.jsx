@@ -24,7 +24,6 @@ export default function Home() {
 	const [id, setId] = useSearchParams();
 	const accessToken = id.get('accessToken');
 	localStorage.setItem('accessToken', accessToken);
-	console.log(accessToken);
 	const cheOauthLogin = async () => {
 		try {
 			let req = await fetch('http://localhost:3011/user/getUser', {
@@ -39,22 +38,13 @@ export default function Home() {
 		} catch (error) {
 			console.log(error);
 		}
-	
-
-		if (accessToken) {
-		}
 	};
 
-	
-
 	useEffect(() => {
-		//Check if access params exist and
-		// if exist set the user to the store and the localstorage access and refresh tokens
-		//if doesnt exists do nothing
+		cheOauthLogin();
 	}, []);
 
 	useEffect(() => {
-		cheOauthLogin(); // What is the goal? Check if the user the is logged? Or check if the user is comming from Google Oauth?
 		dispatch(searchProducts());
 		dispatch(getAllProducts());
 	}, [search]);
