@@ -47,26 +47,31 @@ export default function ProductCompOne({ item }) {
 	return (
 		<div
 			key={item._id}
-			className="product_comp_one mx-1 mb-3 col-sm-6 col-md-4 col-lg-3 col-xl-2"
+			className="product_comp_one d-flex mx-1 mt-3 col-sm-4 col-md-3 col-xl-2"
 		>
 			<h4 className="product_name">{item.productName}</h4>
 			<img
 				onClick={() => history(`/detail/?id=${item._id}`)}
-				className="product_img"
+				className="mt-1 product_img"
 				alt="productImg"
 				src={item.productImg}
 			/>
-			<p className="product_description" onClick={(e) => goToDetail()}>
+
+			<p className="product_description mt-3 p-0 m-0" onClick={(e) => goToDetail()}>
 				{item.productDescription}
 			</p>
-			<h6 className="product_price">
+
+			<h6 className="mt-2 product_price">
 				€<strong>{item.productPrice}</strong>
 			</h6>
+
 			<h6 className="product_price">{item.productCategory}</h6>
+
 			<h6 className="product_rating">
 				<AiFillStar style={{ color: '#aa9115' }} />
 				<AiOutlineStar style={{ color: '#aa9115' }} />
 			</h6>
+
 			{firstName ? (
 				<button
 					onClick={() => dispatch(addToCar(item))}
