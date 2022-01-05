@@ -8,7 +8,7 @@ export default function ProductCompFour({ i, item }) {
 	return (
 		<div className="product-comp-four  my-0 p-0 ">
 			<div className="firstBox d-flex ">
-				<img alt="" src={item.productImg} />
+				<img className="img-fluid" alt="" src={item.productImg} />
 				<hp className="pdItem mx-2 ">{item.productDescription}</hp>
 			</div>
 

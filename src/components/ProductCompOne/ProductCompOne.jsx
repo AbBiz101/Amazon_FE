@@ -52,12 +52,15 @@ export default function ProductCompOne({ item }) {
 			<h4 className="product_name">{item.productName}</h4>
 			<img
 				onClick={() => history(`/detail/?id=${item._id}`)}
-				className="mt-1 product_img"
+				className="mt-1 img-fluid product_img"
 				alt="productImg"
 				src={item.productImg}
 			/>
 
-			<p className="product_description mt-3 p-0 m-0" onClick={(e) => goToDetail()}>
+			<p
+				className="product_description mt-3 p-0 m-0"
+				onClick={(e) => goToDetail()}
+			>
 				{item.productDescription}
 			</p>
 
