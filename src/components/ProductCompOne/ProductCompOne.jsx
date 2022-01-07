@@ -45,6 +45,7 @@ export default function ProductCompOne({ item }) {
 	};
 
 	return (
+		// <div className="">
 		<div
 			key={item._id}
 			className="product_comp_one d-flex mx-2 mt-3 col-sm-5 col-md-4 col-xl-2"
@@ -110,5 +111,6 @@ export default function ProductCompOne({ item }) {
 				<></>
 			)}
 		</div>
+		// </div>
 	);
 }
