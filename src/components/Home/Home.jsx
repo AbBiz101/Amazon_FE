@@ -82,7 +82,7 @@ export default function Home() {
 				<ProductCompThree />
 			</div>
 			<br />
-			<div className="container-fluid objectcont_1 px-0 d-flex">
+			<div className=" container-fluid objectcont_1 px-0 d-flex gx-5 ">
 				{productLoading ? (
 					<Spinner animation="border" role="status">
 						<span className="visually-hidden">Loading...</span>
@@ -90,8 +90,8 @@ export default function Home() {
 				) : (
 					<>
 						{!searchLoading
-							? product.map((item) => <ProductCompOne item={item} />)
-							: search.map((item) => <ProductCompOne item={item} />)}
+							? product?.map((item) => <ProductCompOne item={item} />)
+							: search?.map((item) => <ProductCompOne item={item} />)}
 					</>
 				)}
 			</div>
@@ -99,12 +99,3 @@ export default function Home() {
 		</div>
 	);
 }
-
-/*
-
-{
-	comments.map((x) => <ListGroup.Item>{x}</ListGroup.Item>);
-}
-
- {!searchLoading
-							: search.map((item) => <ProductCompOne item={item} />)} */

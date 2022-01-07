@@ -18,8 +18,21 @@
 .objectcont_1 {
 	flex-wrap: wrap;
 	overflow: hidden;
-	justify-content: space-evenly;
+	/* justify-content: space-evenly; */
+	/* justify-content: ; */
 }
+
+.gap-1 {
+	gap: 0.25rem;
+}
+.gap-2 {
+	gap: 0.5rem;
+}
+.gap-3 {
+	gap: 1rem;
+}
+
+
 
 .carousel-item {
 	width: 100%;

@@ -87,7 +87,7 @@ export const getAllProducts = () => {
 		searchReset();
 		try {
 			const resp = await fetch(
-				`https://amazon-be-completed.herokuapp.com/product`,
+				`http://amazon-be-completed.herokuapp.com/product`,
 			);
 			if (resp.ok) {
 				const data = await resp.json();
