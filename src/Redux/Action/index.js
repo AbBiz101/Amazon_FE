@@ -29,7 +29,6 @@ export const CREATE_PRODUCT = 'CREATE_PRODUCT';
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
 
-
 export const giveComment = (id, comment, userID) => {
 	return async (dispatch) => {
 		try {
@@ -87,7 +86,7 @@ export const getAllProducts = () => {
 		searchReset();
 		try {
 			const resp = await fetch(
-				`http://amazon-be-completed.herokuapp.com/product`,
+				`https://amazon-be-completed.herokuapp.com/product`,
 			);
 			if (resp.ok) {
 				const data = await resp.json();
