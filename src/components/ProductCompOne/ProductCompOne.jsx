@@ -48,7 +48,7 @@ export default function ProductCompOne({ item }) {
 		// <div className="">
 		<div
 			key={item._id}
-			className="product_comp_one d-flex mx-2 mt-3 col-sm-5 col-md-4 col-xl-2"
+			className="product_comp_one d-flex mx-5 mt-3 col-sm-5 col-md-4 col-xl-2"
 		>
 			<h4 className="product_name">{item.productName}</h4>
 			<img
