@@ -77,7 +77,7 @@ export const singleProductReducer = (
 		case GET_A_PRODUCT_ERROR:
 			return { ...state, isError: action.payload };
 		case REMOVE_A_PRODUCT:
-			return {product:undefined}
+			return { product: undefined };
 		default:
 			return state;
 	}
@@ -92,7 +92,7 @@ export const commentsReducer = (state = initialState.comments, action) => {
 		case GET_ALL_COMMENTS_ERROR:
 			return { ...state, isLoading: action.payload };
 		case REMOVE_A_PRODUCT:
-			return { comments:undefined };
+			return { comments: undefined };
 		default:
 			return state;
 	}
@@ -101,11 +101,11 @@ export const commentsReducer = (state = initialState.comments, action) => {
 export const searchReducer = (state = initialState.search, action) => {
 	switch (action.type) {
 		case SEARCH_PRODUCTS:
-			return { stock: action.payload };
+			return { stock: action.payload, isLoading: false };
 		case SEARCH_RESET:
 			return { stock: action.payload, isLoading: true };
 		case SEARCH_LOADER:
-			return { ...state, isLoading: action.payload };
+			return { ...state, isLoading: false };
 		case SEARCH_PRODUCTS_ERROR:
 			return { ...state, isError: action.payload };
 		default:

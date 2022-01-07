@@ -142,36 +142,19 @@ export const removeAProduct = () => ({
 
 export const searchProducts = (name) => {
 	return async (dispatch) => {
-		// e.preventDefault();
 		try {
-			const resp = await fetch('http://localhost:3011/product');
+			const resp = await fetch(
+				'https://amazon-be-completed.herokuapp.com/product?productName=' + name,
+			);
 			if (resp.ok) {
 				const data = await resp.json();
 				const product = data.allProducts;
-				product.filter((prod) => {
-					if (name === '') {
-						return prod;
-					} else if (
-						prod.productName.toLowerCase().includes(name.toLowerCase())
-					) {
-						console.log(prod);
-
-						dispatch({
-							type: SEARCH_PRODUCTS,
-							payload: prod,
-						});
-						return prod;
-					}
+				dispatch({
+					type: SEARCH_PRODUCTS,
+					payload: product,
 				});
 
-				console.log(name);
-
-				// dispatch({
-				// 	type: SEARCH_PRODUCTS,
-				// 	payload: data.data,
-				// });
-
-				dispatch({ type: SEARCH_LOADER, payload: false });
+				dispatch({ type: SEARCH_LOADER, payload: true });
 			} else {
 				console.log('Error fetching.');
 				dispatch({ type: SEARCH_PRODUCTS_ERROR });

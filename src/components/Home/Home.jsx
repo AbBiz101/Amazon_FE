@@ -18,17 +18,22 @@ export default function Home() {
 	const history = useNavigate();
 	const dispatch = useDispatch();
 	const search = useSelector((state) => state.search.stock);
+	const searchLength = useSelector((state) => state.search.stock.length);
 	const product = useSelector((state) => state.product.stock.allProducts);
 	const productLoading = useSelector((state) => state.product.isLoading);
 	const searchLoading = useSelector((state) => state.search.isLoading);
 	const [id, setId] = useSearchParams();
 	const accessToken = id.get('accessToken');
 	localStorage.setItem('accessToken', accessToken);
+
 	const cheOauthLogin = async () => {
 		try {
-			let req = await fetch('http://localhost:3011/user/getUser', {
-				headers: { authorization: `Bearer ${accessToken}` },
-			});
+			let req = await fetch(
+				'https://amazon-be-completed.herokuapp.com/user/getUser',
+				{
+					headers: { authorization: `Bearer ${accessToken}` },
+				},
+			);
 
 			if (req.ok) {
 				const data = await req.json();
@@ -44,10 +49,12 @@ export default function Home() {
 		cheOauthLogin();
 	}, []);
 
+	useEffect(() => {}, [search]);
+
 	useEffect(() => {
 		dispatch(searchProducts());
 		dispatch(getAllProducts());
-	}, [search]);
+	}, []);
 
 	return (
 		<div>
@@ -89,9 +96,9 @@ export default function Home() {
 					</Spinner>
 				) : (
 					<>
-						{!searchLoading
-							? product?.map((item) => <ProductCompOne item={item} />)
-							: search?.map((item) => <ProductCompOne item={item} />)}
+						{searchLength
+							? search.map((item) => <ProductCompOne item={item} />)
+							: product.map((item) => <ProductCompOne item={item} />)}
 					</>
 				)}
 			</div>

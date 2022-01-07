@@ -17,10 +17,13 @@ export default function User() {
 		try {
 			let formDt = new FormData();
 			formDt.append('product', img);
-			let res = await fetch('http://localhost:3011/product/Image', {
-				method: 'POST',
-				body: formDt,
-			});
+			let res = await fetch(
+				'https://amazon-be-completed.herokuapp.com/product/Image',
+				{
+					method: 'POST',
+					body: formDt,
+				},
+			);
 			if (res.ok) {
 				const obj = await res.json();
 				console.log(obj);
@@ -34,20 +37,23 @@ export default function User() {
 	const updateHandler = async (e) => {
 		e.preventDefault();
 		try {
-			let res = await fetch('http://localhost:3011/user/me', {
-				method: 'PUT',
-				body: JSON.stringify({
-					email,
-					firstName,
-					lastName,
-					id,
-					image,
-				}),
-				headers: {
-					'Content-Type': 'application/json',
-					authorization: `Bearer ${accessToken}`,
+			let res = await fetch(
+				'https://amazon-be-completed.herokuapp.com/user/me',
+				{
+					method: 'PUT',
+					body: JSON.stringify({
+						email,
+						firstName,
+						lastName,
+						id,
+						image,
+					}),
+					headers: {
+						'Content-Type': 'application/json',
+						authorization: `Bearer ${accessToken}`,
+					},
 				},
-			});
+			);
 
 			if (res.ok) {
 				let data = await res.json();

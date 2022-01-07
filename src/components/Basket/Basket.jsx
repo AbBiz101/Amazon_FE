@@ -10,14 +10,17 @@ export default function Basket() {
 
 	const sendCartItems = async (e) => {
 		try {
-			let res = await fetch('http://localhost:3011/user/me/cart', {
-				method: 'POST',
-				body: JSON.stringify({ cart }),
-				headers: {
-					'Content-Type': 'application/json',
-					authorization: `Bearer ${accessToken}`,
+			let res = await fetch(
+				'https://amazon-be-completed.herokuapp.com/user/me/cart',
+				{
+					method: 'POST',
+					body: JSON.stringify({ cart }),
+					headers: {
+						'Content-Type': 'application/json',
+						authorization: `Bearer ${accessToken}`,
+					},
 				},
-			});
+			);
 
 			if (res.ok) {
 				let data = await res.json();

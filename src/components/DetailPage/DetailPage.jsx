@@ -30,10 +30,13 @@ export default function DetailPage() {
 		try {
 			let formDt = new FormData();
 			formDt.append('product', image);
-			let res = await fetch('http://localhost:3011/product/Image', {
-				method: 'POST',
-				body: formDt,
-			});
+			let res = await fetch(
+				'https://amazon-be-completed.herokuapp.com/product/Image',
+				{
+					method: 'POST',
+					body: formDt,
+				},
+			);
 			if (res.ok) {
 				const obj = await res.json();
 				console.log(obj);
@@ -47,17 +50,20 @@ export default function DetailPage() {
 	const updateHandler = async (e) => {
 		console.log(val);
 		try {
-			let req = await fetch('http://localhost:3011/product/' + val, {
-				method: 'PUT',
-				body: JSON.stringify({
-					productName,
-					productPrice,
-					productDescription,
-					productCategory,
-					productImg,
-				}),
-				headers: { 'Content-Type': 'application/json' },
-			});
+			let req = await fetch(
+				'https://amazon-be-completed.herokuapp.com/product/' + val,
+				{
+					method: 'PUT',
+					body: JSON.stringify({
+						productName,
+						productPrice,
+						productDescription,
+						productCategory,
+						productImg,
+					}),
+					headers: { 'Content-Type': 'application/json' },
+				},
+			);
 			history(`/`);
 		} catch (error) {
 			console.log(error);
@@ -66,11 +72,14 @@ export default function DetailPage() {
 
 	const deleteHandler = async (e) => {
 		try {
-			let req = await fetch('http://localhost:3011/product/' + val, {
-				method: 'DELETE',
-				body: JSON.stringify({}),
-				headers: { 'Content-Type': 'application/json' },
-			});
+			let req = await fetch(
+				'https://amazon-be-completed.herokuapp.com/product/' + val,
+				{
+					method: 'DELETE',
+					body: JSON.stringify({}),
+					headers: { 'Content-Type': 'application/json' },
+				},
+			);
 			if (req.ok) {
 				setTimeout(() => {
 					history('/');
