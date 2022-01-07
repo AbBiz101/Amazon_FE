@@ -97,8 +97,8 @@ export default function Home() {
 				) : (
 					<>
 						{searchLength
-							? search.map((item) => <ProductCompOne item={item} />)
-							: product.map((item) => <ProductCompOne item={item} />)}
+							? search?.map((item) => <ProductCompOne item={item} />)
+							: product?.map((item) => <ProductCompOne item={item} />)}
 					</>
 				)}
 			</div>

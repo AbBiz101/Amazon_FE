@@ -28,7 +28,7 @@ export const POST_COMMENT = 'POST_COMMENT';
 export const CREATE_PRODUCT = 'CREATE_PRODUCT';
 export const UPDATE_PRODUCT = 'UPDATE_PRODUCT';
 export const DELETE_PRODUCT = 'DELETE_PRODUCT';
-const url = 'https://amazon-be-completed.herokuapp.com/';
+
 
 export const giveComment = (id, comment, userID) => {
 	return async (dispatch) => {
