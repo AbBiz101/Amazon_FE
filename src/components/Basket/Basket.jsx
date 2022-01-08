@@ -8,7 +8,9 @@ export default function Basket() {
 	const cart = useSelector((state) => state.user.cart);
 	const refreshToken = localStorage.getItem('refreshToken');
 	const accessToken = localStorage.getItem('accessToken');
-	console.log(refreshToken,'the token', accessToken);
+	const Token =
+		'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M…A5NX0.VOks_VXMNik9IfhLSB2b_uZbCJek5aYr-_WS-sutzGk';
+	console.log(refreshToken, '<<<<<<the token>>>>>>', accessToken);
 
 	const sendCartItems = async (e) => {
 		try {
@@ -20,7 +22,7 @@ export default function Basket() {
 					body: JSON.stringify({ cart }),
 					headers: {
 						'Content-Type': 'application/json',
-						authorization: `Bearer ${accessToken}`,
+						authorization: `Bearer ${Token}`,
 					},
 				},
 			);

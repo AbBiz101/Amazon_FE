@@ -92,7 +92,7 @@ export default function Login() {
 					>
 						Create Your Amazon Account
 					</button>
-					<a href="http://localhost:3011/user/googleLogin">
+					<a href="https://amazon-be-completed.herokuapp.com/user/googleLogin">
 						<button type="button" className="login_page_btn2">
 							<img
 								alt=""
