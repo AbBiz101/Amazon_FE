@@ -8,21 +8,19 @@ export default function Basket() {
 	const cart = useSelector((state) => state.user.cart);
 	const refreshToken = localStorage.getItem('refreshToken');
 	const accessToken = localStorage.getItem('accessToken');
-	const Token =
-		'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJfaWQiOiI2M…A5NX0.VOks_VXMNik9IfhLSB2b_uZbCJek5aYr-_WS-sutzGk';
 	console.log(refreshToken, '<<<<<<the token>>>>>>', accessToken);
 
 	const sendCartItems = async (e) => {
 		try {
 			let res = await fetch(
-				// 'https://amazon-be-completed.herokuapp.com/user/me/cart',
-				'http://localhost:3011/user/me/cart',
+				'https://amazon-be-completed.herokuapp.com/user/me/cart',
+				// 'http://localhost:3011/user/me/cart',
 				{
 					method: 'POST',
 					body: JSON.stringify({ cart }),
 					headers: {
 						'Content-Type': 'application/json',
-						authorization: `Bearer ${Token}`,
+						authorization: `Bearer ${accessToken}`,
 					},
 				},
 			);
