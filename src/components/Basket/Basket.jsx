@@ -6,9 +6,9 @@ import ProductCompFour from '../ProductCompFour/ProductCompFour';
 export default function Basket() {
 	const cartLength = useSelector((state) => state.user.cart.length);
 	const cart = useSelector((state) => state.user.cart);
-	const accessToken = localStorage.getItem('accessToken');
-	console.log(accessToken);
-	
+	const accessToken = localStorage.getItem('refreshToken');
+	console.log('the token', accessToken);
+
 	const sendCartItems = async (e) => {
 		try {
 			let res = await fetch(

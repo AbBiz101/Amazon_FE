@@ -14,20 +14,24 @@ export default function Login() {
 	const loginHandler = async (e) => {
 		e.preventDefault();
 		try {
-			let res = await fetch('http://localhost:3011/user/login', {
-				method: 'POST',
-				body: JSON.stringify({
-					email,
-					password,
-				}),
-				headers: { 'Content-Type': 'application/json' },
-			});
+			let res = await fetch(
+				'https://amazon-be-completed.herokuapp.com/user/login',
+				{
+					method: 'POST',
+					body: JSON.stringify({
+						email,
+						password,
+					}),
+					headers: { 'Content-Type': 'application/json' },
+				},
+			);
 
 			if (res.ok) {
 				let data = await res.json();
 				console.log(data);
 				localStorage.setItem('accessToken', data.accessToken);
 				localStorage.setItem('refreshToken', data.refreshToken);
+				console.log(data);
 				dispatch(logIn(data.user));
 				history('/');
 			} else {
