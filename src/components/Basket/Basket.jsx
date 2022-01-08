@@ -13,8 +13,8 @@ export default function Basket() {
 	const sendCartItems = async (e) => {
 		try {
 			let res = await fetch(
-				'https://amazon-be-completed.herokuapp.com/user/me/cart',
-				// 'http://localhost:3011/user/me/cart',
+				// 'https://amazon-be-completed.herokuapp.com/user/me/cart',
+				'http://localhost:3011/user/me/cart',
 				{
 					method: 'POST',
 					body: JSON.stringify({ cart }),
