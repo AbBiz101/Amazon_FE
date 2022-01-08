@@ -8,13 +8,10 @@ export default function Basket() {
 	const cart = useSelector((state) => state.user.cart);
 	const refreshToken = localStorage.getItem('refreshToken');
 	const accessToken = localStorage.getItem('accessToken');
-	console.log(refreshToken, '<<<<<<the token>>>>>>', accessToken);
-
 	const sendCartItems = async (e) => {
 		try {
 			let res = await fetch(
-				// 'https://amazon-be-completed.herokuapp.com/user/me/cart',
-				'http://localhost:3011/user/me/cart',
+				'https://amazon-be-completed.herokuapp.com/user/me/cart',
 				{
 					method: 'POST',
 					body: JSON.stringify({ cart }),
